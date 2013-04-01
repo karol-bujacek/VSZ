@@ -1,0 +1,2133 @@
+\shyph
+
+%%%
+
+\input ofs
+
+\setfonts [/]\rm
+\fontdef\sectionfont [CMSans-bf/scaled\magstep2]
+\fontdef\sansbf [CMSans-bf/]
+\fontdef\footnotefont [/8pt]
+
+\newcount\sectioncount
+
+\def\section#1\par{\advance\sectioncount by 1\removelastskip
+\hbox{\vbox{\bigskip\sectionfont\noindent\the\sectioncount.
+#1\medskip}}\noindent}
+
+%%%
+
+% dvojita vertikalna ciara --- dekoracna
+\def\dvrule{\vrule width 2pt \hskip 2pt \vrule}
+% oramovany box, dekoracna ciara na lavej strane 
+\def\begram{\medskip\line\bgroup\dvrule\hss\vbox\bgroup\narrower\medskip\noindent}
+\def\endram{\medskip\egroup\hss\egroup\medskip}
+
+%%%
+
+\newcount\footnotecount
+
+\let\oldfootnote=\footnote
+
+\def\footnote#1{%
+\advance\footnotecount by 1%
+\oldfootnote{${}^{\oldstyle\the\footnotecount}$)}{\footnotefont#1}%
+}
+
+%%%
+
+\def\kW{{\rm kW}}
+\def\MW{{\rm MW}}
+\def\V{{\rm V}}
+\def\kV{{\rm kV}}
+\def\MVA{{\rm MVA}}
+\def\otmin{{\rm ot/min}}
+\def\m{{\rm m}}
+\def\dm{{\rm dm}}
+\def\cm{{\rm cm}}
+\def\mm{{\rm mm}}
+\def\Hz{{\rm Hz}}
+
+\def\T{{\rm T}}
+\def\Wkg{{\rm W/kg}}
+
+\def\st{\ifmmode{}^{\circ}\else{${}^{\circ}$}\fi}
+\def\stC{\ifmmode{}^{\circ}{\rm C}\else{${}^{\circ}$C}\fi}
+
+%%%
+
+\def\diameter{\hbox{\o}}
+
+%%%
+
+\input graphicx
+
+\newcount\obrazokcount
+
+%\def\obrazok#1{
+%\advance\obrazokcount by 1%
+%\noindent{\sansbf Obrázok \the\obrazokcount.:} #1%
+%}
+
+\def\obrazok#1#2{
+\medskip
+\centerline{\includegraphics{obrazky/#2}}
+\advance\obrazokcount by 1%
+\smallskip%
+\centerline{{\sansbf Obrázok \the\obrazokcount.:} #1}%
+\medskip
+}
+
+\def\noobrazok#1{
+\medskip
+\advance\obrazokcount by 1%
+\centerline{{\sansbf Obrázok \the\obrazokcount.:} #1}%
+\vglue 3cm
+\medskip
+}
+
+%%%%% --------------------------------------------
+
+\noindent Na základe predná¹ok doc. Ing. J. Petra, CSc. v~predmete X13VSZ ---
+výroba silnoproudých zaøízení spracoval Karol Bujaèek. Letný semester
+roku 2007/2008.
+
+Tento dokument vznikol iba na základe zápiskov z~predná¹ok, nejde o~text vytvorený doc. Petrom.
+
+\section Organizaèné zále¾itosti
+
+\begram
+{\it Ak nieèo potrebujeme, mô¾me prís». ¥udské styky sú niekedy lep¹ie.}
+\endram
+
+V~tomto predmete budeme poèu» rôzne veci o~výrobe. Podklady sú
+dostupné na web stránkach katedry. V~PDF dokumente je zhruba 100 strán,
+na predná¹ke k~nim bude slovný komentár a prípadne ilustraèné obrázky a
+fotografie. Strany 33--88 budú pri skú¹ke tie hlavné. Strany 1--7,
+15--25 a 28--29 je treba si preèíta», ale nie sú úplne podstatné (na
+skú¹ke mô¾e by» otázka, ale znaène ¹iroká). Okrem toho bude poskytnutý
+e¹te nejaký dodatkový text (to ale a¾ behom semestru).
+
+Väè¹inou pôjde o~rozprávanie na tému \uv{ako sa tie stroje vyrábajú.}
+
+Dva tý¾dne pred koncom semestru budú môc» záujemcovia ís» na jeden
+z~dvoch predtermínov (vo ¹tvrtok po predná¹ke). Zápoèet mô¾me dosta» u¾
+v~predposlednom tý¾dni.
+
+\begram
+{\it Rotor ktorý vypochodoval na pole, tam tancoval a vyvàtal dieru.
+Potom si do nej lahol. Na¹»atie na tom poli nikto neoral, ani ten
+Pøemysl.}
+\endram
+
+\section Rozdelenie toèivých elektrických strojov
+
+Pri výrobe malých strojov (do výkonu $10\;\kW$) sa vo väè¹ine prípadov
+uplatòuje sériová výroba. Pri výrobe stredných (do $1\;\MW$) a veµkých
+strojov ide o~kusovú výrobu --- èím väè¹í stroj, tým viac sa uplatòuje.
+
+Podµa princípu èinnosti ide o~stroje jednosmerné a asynchrónne (majú
+rovnaký stator, rotor je rozdielny), synchrónne alebo alternatívne.
+
+Podµa úèelu pou¾itia ide najmä o~motory pre trakciu, ¾eriavy, valcovacie
+stolice, kompresory, vodárne, »a¾obné stroje, rýchlobe¾né aplikácie.
+Ka¾dý typ pohonu mô¾e ma» (a väè¹inou aj má) odli¹né technologické
+nároky.
+
+\section Rozdelenie netoèivých elektrických strojov
+
+Ide hlavne o~transformátory, tlmivky a elektromagnety. My sa budeme
+venova» hlavne transformátorom väè¹ích výkonov.
+
+Malé transformátory: do $10\;\kW$, stredné: do $1\;\MW$, veµké: nad
+$1\;\MW$. Stredné a veµké transformátory sú na väè¹ie napätie.
+
+Podµa vyhotovenia ide o~transformátory vzduchové (do jednotiek \MW;
+¹pièková firma mô¾e vyrobi» suchý transformátor aj pre desiatky \MW, ale
+nie je to obvyklé) alebo olejové. Olejové transformátory sú
+najèastej¹ie. Keï¾e olej by mohol z~transformátoru vytiec», býva pod ním
+veµká nádoba na jeho zachytenie. Ïal¹í problém súvisí s~horµavos»ou
+oleja (vyplýva z~toho ni¾¹ia dovolená prevádzková teplota).
+
+Taktie¾ existujú transformátory ¹peciálne --- napríklad
+autotransformátory, regulaèné transformátory a podobne.
+
+\section Výkony elektrických strojov
+
+Spodná hranica nás príli¹ nezaujíma, ide napríklad o~malé motorèeky
+v~hraèkách.
+
+Aká bude horná hranica? Zále¾í to najmä na type stroja. Veµké
+turboalternátory sú pre napätie $24\;\kV$ a výkon $1000\;\MVA$. K~nim by
+bol potrebný transformátor na $1000\;\MVA$. To by bol ale \uv{poriadny
+kus} a mohli by by» technologické problémy s~jeho výrobou a prepravou.
+Tie najväè¹ie transformátory sa preto nevyrábajú ako trojfázové, ale
+pou¾ijú sa tri jednofázové. Mô¾u tak by» men¹ie, ma» men¹í výkon a
+men¹ie nároky na výrobu a prepravu.
+
+Aké výkony sa pou¾ívajú v~praxi? Najväè¹ie výkony sú $300$--$500\;\MVA$
+a ide o~turboalternátory v~parných a atómových elektráròach.
+Hydroalternátory majú výkony men¹ie.
+
+Je treba myslie» na to, ¾e výkon, nominálne napätie, vyhotovenie a
+pou¾itie transformátoru spolu súvisia.
+
+\section Charakteristika výroby
+
+Poznáme dva základné princípy výroby: kusová a sériová.
+
+Kusová výroba sa uplatòuje najmä pri výrobe veµkých strojov. Samozrejme,
+zákazník mô¾e chcie» na zákazku aj malý stroj, ale nie je to tak èasté
+(je to finanène nároèné). Uplatòuje sa teda najmä pre stroje veµkých
+výkonov, nad $100\;\kW$ respektíve $1\;\MW$.
+
+Èím je stroj väè¹í tým väè¹í problém mô¾e vzniknú» pri zanesení nejakej
+chybe pri výrobe. Keï¾e sa tu objavuje veµa ruènej práce
+($30$--$50\;\%$), je dôle¾ité dba» na vplyv µudského faktoru (èlovek
+mô¾e nevedie», alebo mô¾e by» fyzicky vyèerpaný).
+
+Jeden hydroalternátor (teda nie ten najvýkonnej¹í stroj) má okolo
+milióna súèiastok (poèítané je v¹etko, èo sa dá zobra» ako jeden kus,
+teda aj matièky, skrutky, \dots). Na pracovníka sú kladené veµké nároky:
+k~samostatnej práci je pripustený a¾ po dlhej dobe, keï má zamestnávateµ
+voèi jeho schopnostiam a voèi nemu samotnému dôveru.
+
+Z~hµadiska technologického usporiadania ide o~pou¾itie veµkých
+¹peciálnych strojov a nároènú technologickú prípravu výroby.
+
+Na rozdiel od kusovej výroby, sa hromadná uplatòuje najmä pri výrobe
+men¹ích strojov. Vyu¾íva predmetové usporiadanie, malý stroj je mo¾né
+pomocou automatizovaných výrobných liniek presúva» k~jednoúèelovým
+strojom. Prípadná chyba vo výrobe sa ale objaví pri veµkom poète
+výrobkov (preto¾e sa stihnú vyrobi» pred tým, ne¾ chybu odhalíme).
+
+Sna¾íme sa o~stavebnicovos», modulárnos» a ¹tandardizáciu výrobkov i
+technológií. Je to vhodné z~toho dôvodu, ¾e je mo¾né jednoduch¹ie
+vykonáva» servis a opravy, prípadne upravova» výrobky pomocou výmennych
+dielov --- modulov.
+
+\section Systémové pojatie technickej prípravy výroby
+
+\noindent{\bf Problém}: Charakteristika technickej prípravy výroby podµa
+úplnosti výrobného cyklu a sériovosti výroby.
+
+Podiel ruènej práce podµa technológií (montá¾e cez $30\;\%$).
+
+Vyu¾itie disponibilného èasového fondu podµa zmenaovosti,
+technologickosti a automatizácie.
+
+Ukazovatele pre hodnotenie úrovne výrobkov a výroby:
+normohodina(Nh)/\kW, Nh/kus(ks) --- pracnos», ks/nh --- výkon, Nh/Kè,
+Kè/kg, kg/ks, $P_{\rm max}$, $n_{\rm max}$, Kè/$m^2$, Kè/osoba, $t/m^2$.
+
+Normohodina je doba potrebná pre vykonanie konkrétnej práce vztiahnutá
+na kalkulaènú jednotku (kus, tonu, $\rm m^2$, $\rm m^3$, \dots). Teda:
+{\it za ako dlho vyrobím $1\;\rm kg$ materiálu?}
+
+Produktivita práce je úèinnos» práce a je definovaná ako:
+
+$$
+P={\rm {výstup \over vstup}}.
+$$
+
+Ako aj vstup tak aj výstup mô¾e by» v~kg, ks, m, Kè, Nh, poètoch
+pracovníkov a podobne. Najèastej¹ie sa uvádza
+
+$$
+P={\rm {tr¾by \over náklady}},
+$$
+
+ak nie sú jednotky rovnaké tak sa uvádza v~percentách.
+
+
+\section Èlenenie výroby
+
+Podµa vz»ahu k~výrobku mô¾e ís» o~výrobu hlavnú alebo o~pomocné a
+obslu¾né procesy. Hlavná výroba sa mô¾e rozdeli» na predhotovujúcu
+(polotovary), zhotovujúcu a dohotovujúcu. Pomocné a obslu¾né procesy sú
+znaène závislé na sériovosti výroby a èo do ceny, mô¾u niekedy prevá¾i»
+hlavnú výrobu (najmä ak ide o~nejaký ¹pecifický úkon).
+
+Podµa vz»ahu k~výrobnému programu mô¾e ís» napríklad o~hlavnú,
+o~doplnkovú alebo o~pridru¾enú výrobu.
+
+Podµa úplnosti výrobného cyklu mô¾e ís» napríklad o~výrobu s~úplným
+výrobným cyklom, o~výrobu polotovarov, o~montá¾ne závody.
+
+\section Kon¹trukèná príprava výroby
+
+Ide o~systém montá¾nych celkov a ¹tandardizáciu, predstavuje a¾ $25\;\%$
+výrobných nákladov.
+
+Pre zmen¹enie podielu rutinných prác sa vyu¾ívajú systémy CAD. Je tak
+mo¾né zmen¹i» potrebný poèet kon¹truktérov voèi robotníkom.
+
+\section Technologická príprava výroby
+
+Ide najmä o~rozbor súèiastkovej základne (¹tandardizáciu), výber
+polotovarov a poradia operácií, výber strojov, nástrojov a meradiel,
+výpoèet technicko-ekonomických údajov (materiál, energia, èas).
+
+Rozsah technologickej dokumentácie je závislý na charaktere výroby
+(kvalifikácia robotníkov).
+
+©tandardizácia technologickej prípravy výroby priná¹a mo¾nos» aplikácie
+výpoètovej techniky.
+
+Technologická príprava výroby tvorí podstatnú èas» výroby (vlastne ide
+o~kancelárske operácie). Ale do tohto predmetu to nepatrí, to by sme
+nemali èas dozvedie» sa nieèo o~výrobe.
+
+\section Kovové kon¹trukèné materiály
+
+Ide o~veµa rôznych materiálov, napríklad: oceµ tr. 11 pre zvárané
+kon¹trukcie, oceµ tr. 11 a¾ 12 pre men¹ie hriadele, ocele tr. 16 a¾ 17
+pre turbostroje a obruèe.
+
+Turbostroje patria do oblasti toèivých strojov s~veµmi vysokými otáèkami
+--- prevádzkové otáèky $3000\;\otmin$, skú¹ané pri $4000\;\otmin$. Sú
+teda pou¾ité vysokokvalitné ocele, tie najlep¹ie aké vôbec mô¾u by».
+Z~takejto ocele je vykovaný rotor. V~òom sú vyfrézované zuby, ktoré by sa
+mohli mechanicky odtrhnú» a spôsobi» veµké ¹kody. Sme schopní vytvori»
+rotor do priemeru $1{,}1\;\m$ (pri väè¹om priemeri by bola odstredivá
+sila príli¹ veµká, kvalita oceli nedostatoèná a zuby by sa mohli
+vytrha». Rotor teda musíme spravi» dlhý --- to ale priná¹a ïaµ¹í
+problém, dlhý rotor s~malým priemerom sa mô¾e rozkmita» ako struna.
+ 
+Obruèe, slangovo nazývané {\it kapny}, dr¾ia vinutie a chránia ho pred
+úèinkami obrovskej odstredivej sily. Obruè sa nasádza za tepla
+(pôsobením tepla zväè¹í svoj priemer) a po vychladnutí sa pevne usadí.
+Výrobná cena dvoch obruèí je veµká, mô¾e dosahova» hodnotu a¾ jedného
+milióna korún.
+
+Kostry strojov sa vyrábajú z~liatiny, hliníku alebo zvarencov.
+
+Hliník je dnes ale anomália. Boli doby, keï medi bolo málo a bola príli¹
+drahá. Podobne to bolo aj s~oceµou. Na výrobu celých asynchrónnych
+motorov z~hliníku (celohliníkových) bol vyvýjaný finanèný aj politický
+tlak. Z~hliníku neboli vytvorené iba lo¾iská a magnetický obvod (to by
+naozaj technicky ne¹lo). Hliník má oproti medi men¹iu vodivos» a motor
+teda musel by» väè¹í. Zmena rozmerov razených plechov pre magnetický
+obvod bola nároèná a teda motor bol dlh¹í --- naukladalo sa viac plechov
+za seba.
+
+Ïal¹í problém hliníku je ten, ¾e teèie. Preto je potrebné do»ahova»
+svorky, aby nedo¹lo k~preru¹eniu vodièa. Je dôle¾ité, aby sa v~¾iadnom
+prípade nepreru¹il nulový vodiè --- viedlo by to k~smrtelným úrazom,
+na kostre by sa objavilo takmer plné napätie zdroja a staèilo by sa
+chyti» nejakého vodivého/uzemneného predmetu.
+
+Rôzne ïal¹ie komponenty mô¾u by» vyrábané z~ne¾elezných materiálov ---
+mosadz, bronz a podobne.
+
+\section Výroba hriadeµov
+
+Problémom mô¾e by» dosiahnutie po¾adovanej pevnosti, presných brúsených
+plôch a rozmerov podµa normy.
+
+Vstupným materiálom býva napríklad valcovaná oceµ (do $\diameter$
+$150\;\mm$), pre hromadnej¹iu výrobu oceµ kalibrovaná »ahaná (do
+$\diameter$ $70\;\mm$) alebo tepelne spracovaná kovaná hriadeµ.
+
+Kvalita materiálov je kontrolovaná, prídavky do $5\;\mm$ pri valcovaných
+polotovaroch.
+
+\section Postup výroby kovaných hriadeµov
+
+Postup pozostáva z~niekoµkých krokov: o~liatie ingotov do kovových
+kokíl\footnote{Kokila --- kovová (liatinová) odlievacia forma na
+oceliarske alebo lejárske odliatky.} (ide zhruba o~dvojnásobnú
+hmotnos»), o~kovanie --- vybranie odliatku z~kokily pri cca $700\;\stC$,
+o~eventuálne prihrievanie a o~¾íhanie pri teplote $700$--$800\;\stC$
+s~eventuálnym popú¹»aním. Pri zohriatí a pomalom ochladzovaní toti¾
+prebieha rekry¹talizácia a zlep¹uje sa kvalita materiálu.
+
+Osový vývrt slú¾i na odber vzoriek z~hriadeµa. Netýka sa to iných
+rotorov ne¾ turborotorov --- turborotory sú toti¾ ¹pièky vo výrobe
+rotorov, je to taká ¹µachta (v~zmysle ¹µachta ako spoloèenské
+postavenie, ich výroba je toti¾ nároèná, preto¾e ide o~veµmi dlhý
+rotor). Ide vlastne o~vyvàtanú dieru, dlhú asi $8\;\m$ a s~priemerom
+niekoµko centimetrov. Vývrt vytvárame preto, aby sme zistili, èi je
+rotor dobre vytvorený. Otvor vyle¹tíme a hodnotíme kvalitu ocele.
+Nakoniec ním mô¾me nieèo vies», napríklad prívody budiaceho vinutia. 
+
+Taktie¾ je mo¾né (a èasto nevyhnutné) vykonáva» skú¹ky vizuálne,
+jednosmerným prúdom, ultrazvukom prípadne mechanické skú¹ky odobraných
+vzoriek.
+
+\section Obrábanie hriadeµov
+
+Kúpená oceµová hriadeµ nemusí by» rovná. Je vhodné ju teda vyrovna»
+pomocou valèekov alebo lisov.
+
+Po¾adovanú då¾ku (ak takú hriadeµ nekúpime) mô¾me získa» delením,
+napríklad pomocou píly, no¾níc alebo plameòa. Potom budeme musie»
+zarovna» èelá, napríklad pomocou jednoúèelového stroja (taký stroj sa
+oplatí najmä pri výrobe veµkých sérií).
+
+Medzi ïal¹ie operácie patrí napríklad centrovanie (orysovanie na
+doskách) alebo hrubovanie (hrubovanie je to prvé obrábanie, \uv{na
+hrubo}.
+
+Hriadeµ obrábame sústru¾ením, napríklad s~pozdå¾nym posuvom alebo so
+zapichnutím a pozdå¾nym posunom.
+
+Na konci hriadeµa býva príruba. Pomocou nej je spojený s~nejakým iným
+hriadeµom (strojom). Ak spojíme dve hriadele (pritom obe sú dlhé),
+polo¾ené na dva krajné konce, tak sa prehnú (priehyb mô¾e by» tak malý,
+¾e ho okom nevidie», ale bude tam). Tak budú hriadele a spoj namáhané a
+mô¾e to vies» k~veµkým problémom. Mohol by sa napríklad odtrhnú» kus
+z~rotoru a znièi» statorové vinutie, rotor by mohol vypadnú» zo statoru.
+Rie¹ením je napríklad ulo¾enie jednej strany rotoru (tej vzdialenej¹ej
+od spoju) o~nieèo vy¹¹ie, napríklad o~milimeter.
+
+Ïal¹ím problémom rotorov sú lo¾iskové prúdy. Lo¾iská sú elektricky
+vodivé a teèie nimi prúd do zeme. Mô¾e to spôsobova» problémy.
+
+Èasto potrebujeme hriadeµ brúsi». Kde? Tam, kde vy¾adujeme hladkú
+plochu: napríklad lo¾iská. Veµké stroje majú brúsený hriadeµ a klzné
+lo¾isko s~olejovým filmom (mechanicky odolnej¹ie rie¹enie, ak by bolo
+lo¾isko guµôèkové tak sa guµôèky deformujú).
+
+Brúsenie mô¾e by» napríklad medzi hrotmi, håbkové, prieène alebo
+stupòové.
+
+Èasto sa sna¾íme o~automatizáciu výroby, ale niekedy je veµmi nároèná.
+Napríklad rotor mô¾e nejaké mechanické chápadlo chyti» dobre, ale pri
+dvíhaní plechu by to bolo nároèné. Plech pre magnetické obvody toti¾ nie
+je mo¾né ohýba», narástli by pri tom magnetické straty.
+
+Na vyhotovenú hriadeµ musíme nasadi» vlastný rotor a umo¾ni» prenos sily
+respektíve momentu. Sú rôzne spôsoby. Pre men¹ie stroje je be¾né
+pou¾itie vrúbkovania, pozdå¾nych drá¾ok.
+
+\obrazok{Upevnenie rotoru pomocou vrúbkovania.}{upevnenie-vrubkovanim.pdf}
+
+Iný spôsob spoèíva v~pou¾ití pier. V~plechoch magnetického obvodu sú
+vyhotovené drá¾ky/zárezy a do nich zatlaèíme oceµové perá.  
+
+\obrazok{Upevnenie rotoru pomocou pier.}{upevnenie-perami.pdf}
+
+Ak je celkový priemer rotoru veµký, mô¾me pou¾i» upevnenie pomocou
+rebier, hriadeµ nebude musie» by» s~tak veµkým priemerom.
+
+\obrazok{Upevnenie rotoru pomocou rebier.}{upevnenie-rebrami.pdf}
+
+Aby sme mohli jednotlivé vrstvy sklada» z~celých kruhov, musí by»
+priemer do jedného metru (väè¹ie plechy sa nevyrábajú). Ak je priemer
+väè¹í, je treba jednu vrstvu zlo¾i» z~viacerých segmentov.
+
+Tak ako v~prípade, ¾e ide o~celé kruhy aj v~prípade, ¾e ide o~segmenty,
+je mo¾né ich na rebrá upevòova» dvoma základnými spôsobmi. Ide
+o~upevnenie na kladivo a na rybinu. Kladivo má tvar písmena \uv{T}, rybina
+tvar lichobe¾níkový.
+
+\obrazok{Upevnenie na kladivo.}{upevnenie-na-kladivo.pdf}
+
+\obrazok{Upevnenie na rybinu.}{upevnenie-na-rybinu.pdf}
+
+\section Triedenie hriadeµov
+
+Je niekoµko typov hriadelí, napríklad: hriadele hladké --- pre men¹ie
+stroje, hriadele odstupòované --- predstavujú lacnej¹ie ulo¾enie,
+hriadele s~prírubou --- pre valcovacie stolice, hriadele s~rebrami.
+
+Taktie¾ je potrebné realizova» napríklad hrubovanie, tepelné
+spracovanie, opracovanie rebier (najlep¹ie spoloène viac rebier naraz),
+zostavenie do prípravku, nahriatie, s»ahovanie, postupné privarenie
+eventuálne vy¾íhanie a opracovanie rebier.
+
+\section Linky na výrobu hriadeµov 
+
+Ide o~zaujímavú oblas» a výskyt výrobnej linky naznaèuje, ¾e pôjde
+o~sériovú výrobu. Na vstupe bude guµatina a na výstupe budú vychádza»
+hriadele pripravené na nasadanie rotoru.
+
+Na linke sa budú nachádza» automatické pracoviská, napríklad pre
+nastavenie stroja, výmenu nástrojov, kontrolné meranie, operaènú
+manipuláciu alebo pracoviská medzioperaènej manipulácie.
+
+Výrobná linka býva osadená jednoúèelovými strojmi a výrobok sa medzi
+nimi presúva po vopred pripravenej výrobnej dráhe.
+
+Sériovos» výroby smeruje k~vypracovaniu technologického projektu.
+
+\section Obrábanie kostier
+
+Ide o~zlo¾itej¹iu situáciu. Kostry sú dvoch druhov: liate (budú sa
+vytvára» v~zlievarni, najmä pre malé stroje) alebo zvárané (pre väè¹ie
+motory, do tejto oblasti smeruje výroba).
+
+Na kostry sú kladené znaèné nároky. Kostra musí by» dostatoène tuhá aby
+sa nekrútila a aby motor zle nepracoval. Príslu¹né plochy musia by»
+rovnobe¾né a kolmé a musia ma» spoloènú os.
+
+\section ©peciálne prípady obrábania hriadeµov a rotorov
+
+V~prípade krabicovej kon¹trukcie je problémom privarenie rebier na
+náboje.
+
+V~prípade obrábania turborotorov je problémov viac. Sú z~veµmi kvalitnej
+chróm niklovej oceli a ide o~zlo¾itý výkovok s~osovým vývrtom. Pri
+obrábaní je potrebné hriadeµ podoprie» --- mohol by sa prehnú» (prièom
+priehyb by nemusel by» veµký) a po obrobení by rotor nebol rovný.
+Podperná èas» sa nazýva {\it luneta}.
+
+\obrazok{Podopretie rotoru lunetou.}{podopretie-lunetou.pdf}
+
+Frézovanie drá¾ok je jedna z~najnároènej¹ích operácií. Rotor
+tulboarternátora nemá pólové nástavce, ale je hladký. V~oblasti mimo
+pólov má vyfrézované drá¾ky. Èas» medzi drá¾kami sa nazýva {\it zub}.
+Pri koreni zubu je najväè¹ie namáhanie (mechanické, vplyvom pôsobenia
+odstredivých síl).
+
+\obrazok{Drá¾ky rotoru turboalternátoru.}{turboalternator-drazky.pdf}
+
+Po vlo¾ení vinutia bude drá¾ka uzatvorená (zaklínovaná) bronzovým
+klínom (má vý¹ku zhruba $3\;\cm$, aby vydr¾al pôsobenie odstredivých
+síl).
+
+Iným spôsobom vyhotovenia drá¾ok namiesto frézovania je hoblovanie
+pomocou nástroja nazývaného hoblovka.
+
+Rotory hydroalternátorov majú výrazne iný tvar. Ide o~pomalobe¾né stroje
+a mô¾u ma» po obvode pripevnené vyniklé póly.
+
+Problémom mô¾e by» zoskrutkovanie ramien na náboj.
+
+\section Postupy obrábania kostier
+
+Je snaha dodr¾iava» ¹tandardné zvyklosti --- starnutie, eventuálne
+¾íhanie. Sna¾íme sa minimalizova» preupínanie.
+
+Pri kusovej výrobe ide o~prácu s~veµkými obrobkami, pou¾itie presných
+¹peciálnych nástrojov a prepracovaného technologického postupu.
+
+Pri sériovej výrobe ide o~technologický projekt (výrobné systémy),
+eventuálne linky s~obrábacími centrami alebo stavebnicovými jednotkami.
+
+\section Obrábanie kostier v~kusovej výrobe
+
+Pôjde najmä o~zváranie a obrábanie. Ako nástroj pou¾ívame
+karusel\footnote{Veµký sústruh na obrábanie rotaèných útvarov. Veµkos»ou
+zodpovedá men¹iemu kolotoèu.}
+
+Medzi ¹tandardné problémy veµkých obrobkov patrí napríklad deformácia
+spôsobená upnutím, tuhos» vzhµadom k~obrábaniu, po¾adované presnosti
+rozmerov a plôch.
+
+Pou¾ité postupy sa lí¹ia poèiatoènou plochou upnutia a sledom operácií
+hlavne podµa pomeru då¾ky a priemeru. Pri porovnateµnej då¾ke a priemere
+je mo¾né zaèa» s~upnutím na stred, ak je priemer výrazne väè¹í je
+potrebné upína» na prírubu (èelný sústruh).
+
+\section Obrábanie kostier v~hromadnej výrobe
+
+Táto operácia je zlo¾itej¹ia ne¾ v~prípade kusovej výroby.
+Predpokladáme, ¾e kostry sú vyrobené a potrebujeme ich obrobi».
+Najèastej¹ím rie¹ením je pou¾itie lineárnej linky.
+
+Ide najmä o~sústru¾enie, vàtanie a vytváranie závitov. Ako tieto
+operácie prebiehajú? Niekto (èasto to býva èlovek) zoberie kostru a
+potom si ïalej výrobok podáva. Kostru je potrebné nejak uchyti». Ak je
+to odliatok tak ju nemô¾eme upnú presne a teda zo zaèiatku obrábania
+máme nejakú nepresnos». V~nejakej polohe ale musíme zaèa», nepresnos»
+neskôr minimalizujeme.
+
+Pre kostry s~porovnateµnou då¾kou a priemerom mô¾me upnú» kostru od
+stredu. Po opracovaní jednej príruby ju pritlaèíme na nejakú pevnú stenu
+a obrobíme aj z~druhej strany (to pôvodne nebolo mo¾né, preto¾e
+opracovaniu zabraòovala upínacia kon¹trukcia). Následne sa znova obrobí
+aj stred (tak¾e ak tam bola nepresnos» tak sme sa jej zbavili). Nakoniec
+sa dobrusujú príruby a vtlaèí sa tam (samonosný) statorový paket.
+
+Takáto koncepcia vy¾aduje vyrie¹enie manipulaèného systému (napríklad
+technologickej palety s~presným polohovaním v~staniciach).
+
+\obrazok{Obrábanie kostry s~upnutím na stred.}
+{obrabanie-upnutie-na-stred.pdf}
+
+\obrazok{Obrábanie kostry s~upnutím na
+prírubu.}{obrabanie-upnutie-na-prirubu.pdf}
+
+\section Lisovanie za studena
+
+Výhody: men¹ia hmotnos», väè¹ia pevnos», hotová súèiastka, veµká
+produktivita.
+
+Vývojové smery: trvanlivos» lisovadiel, rýchlobe¾nos» lisov,
+automatizácia lisovania, zlúèené a postupné lisovanie.
+
+Je treba zvoli» pomer medzi cenou stroja a sériovos»ou výroby.
+
+\section Strihanie
+
+Ide o~strhanie plechov pre magnetické obvody. Pou¾ívame niekoµko druhov
+no¾níc, ide napríklad o~pákové, ktoré majú tvar \uv{V} ako klasické
+no¾nice, o~tabuµové, kde horný brit strihne na jeden krát a mô¾e by»
+rôzne tvarovaný, napríklad zaguµatený alebo o~kotúèové, ktoré
+pozostávajú z~dvoch proti sebe sa toèiacich kotúèov medzi ktorými
+prechádza plech.
+
+Kotúèové no¾nice musia by» z~veµmi tvrdého kovu a ich brúsenie je
+nároèné.
+
+Plechy mô¾me striha» aj pomocou lisov. Jednoduchý lis pozostáva
+z~priestri¾nice, ktorrá má tvarovaný otvor a priestri¾níku, ktorý do tohto
+otvoru z~hora nabieha. Pri strihaní nesmú vznika» otrepy a lis sa nesmie
+zadrie». Preto je medzi priestri¾nicou a priestri¾níkom vôµa. Aká? To
+zále¾í na konkrétnom pou¾ití.
+
+V¹eobecne lisy poznáme napríklad výstredníkové, pneumatické alebo
+hydraulické. Skosené brity umo¾òujú pokles potrebnej sily.
+
+\section Magnetické obvody elektrických strojov
+
+Pou¾ívajú sa kremíkové plechy s~obsah kremíku $0{,}5$--$4{,}5\;\%$ a
+obsahom uhlíku maximálne $0{,}05\;\%$. Obsah uhlíku zni¾ujeme ¾íhaním
+pri teplote $800\;\stC$.
+
+Nie je pravidlom, ¾e magnetický obvod je z~kremíkových plechov, ale
+väè¹inou z~nich je. Inou variantou je napríklad magneticky mäkká oceµ
+pou¾itá na póly jednosmerných strojov.
+
+Kremík zvy¹uje elektrický odpor plechu a teda zni¾uje veµkos» strát
+spôsobených vírivými prúdmi. Zároveò ale zvy¹uje mechanickú tvrdos» a
+strihanie plechov je veµmi nároèné (hlavne plechov pre motory kde sú
+drá¾ky).
+
+Je niekoµko druhov kremíkových plechov. Pre malé toèivé stroje
+(men¹ie asynchrónne motory, mixéry a podobne) sa pou¾ívajú za tepla
+valcované plechy. Majú pomerne veµký obsah kremíku --- $2$--$3\;\%$ a
+straty $p_1 = 3{,}0\;\Wkg$ pri indukcii $1\;\T$. Vo väè¹ine svetovo
+vyrábaných stredných a najmä veµkých strojoch bývajú neorientované
+plechy za studena valcované s~$p_1 = 2{,}5\;\Wkg$.
+
+Pri valcovaní za studena sú plechy hlad¹ie (rozdiel je mo¾né zisti» aj
+dotykom). Ak sú plechy hlad¹ie tak sa nám ich do paketu podarí vlo¾i»
+viac a èiniteµ plnenia bude lep¹í.
+
+Pri valcovaní za studena získame rovnaké straty pri men¹om mno¾stve
+kremíku. To prinesie lep¹ie vlastnosti pri razení otvorov --- plech bude
+menej tvrdý a na no¾nice a lisy mô¾u by» kladené men¹ie nároky, prípadne
+ich nie je potreba tak èasto ostri».
+
+Pre netoèivé stroje, transformátory, sa za tepla valcované plechy
+pou¾ívajú len pre tie najmen¹ie stroje. V¹etky stredné a veµké budú
+z~orientovaných za studena valcovaných plechov (s~Gossovou ¹truktúrou).
+Po nahradení plechov za tepla valcovaných plechmi s~Gossovou ¹truktúrou
+sa ich objem zmen¹il a¾ o~¹tvrtinu, majú men¹ie magnetizaèné prúdy.
+
+Plechy je potrebné izolova». Ak by neboli izolované a pritlaèili by sme
+ich k~sebe tak by narástol objem a s~ním aj straty vírivými prúdmi.
+
+Plechy mô¾me izolova» syntetickými lakmi na bázi polyesteru. Ich hrúbka
+je $0{,}01\;\mm$, sú priesvitné a sfarbené mierne do hneda.
+
+Dnes je väè¹ina plechov izolovaná keramickým povlakom. Izolujú sa vo
+fabrike pri výrobe plechov a teda plech kupujeme u¾ izolovaný. Keramická
+izolácia preto, lebo je odolná voèi ¾íhaniu. Ide o~rôzne kremièitany,
+obchodné názvy napríklad CARLITE, KERIZOL.
+
+Ak je priemer stroja veµký tak sa strihajú jednotlivé segmenty a tie sa
+skladajú, vrstvy teda nie sú z~jedného kusu.
+
+V¹etky motory je treba chladi». Malé motory mô¾u ma» chladenie
+vzduchové, ale pre väè¹ie motory je treba pou¾i» napríklad chladenie
+vodíkové.
+
+Èelo statorového vinutia mô¾e ma» pri veµkých strojoch priemer a¾
+$1\;\m$. Tvorí kô¹ a preto sa mu hovorí {\it ko¹ové vinutie}.
+
+\section Vybavenie lisovní
+
+Ide nám hlavne o~prestrihovanie plechov. Pou¾ívajú sa veµké
+výstredníkové lisy, vysoké a¾ $5\;\m$. Sú hluèné.
+
+Drá¾kovací lis vylisováva otvory pre drá¾ky v~statore alebo aj v~rotore.
+Lisuje jednu drá¾ku po druhej, po vylisovaní drá¾ky sa statorový plech
+pootoèí. Je tie¾ mo¾nos» lisova» v¹etky drá¾ky naraz, ale to je oveµa
+drah¹ie.
+
+Z~dôvodu plnenia drá¾ok a mo¾nosti po¹kodenia izolácie vinutia je
+potrebné dodr¾a» presnú rozteè drá¾ok --- aby zapadali jedna na druhú.
+
+Medzi ïal¹ie vybavenie patria prestrihovadlá: jednoduché, zlúèené,
+postupové.
+
+\obrazok{Prestrihovadlo.}{prestrihovadlo.pdf}
+
+\section Plechy pre toèivé elektrické stroje v~kusovej výrobe
+
+Maximálna ¹írka plechu ktorý sa vyrába a predáva je $1\;\m$, preto pre
+priemer statoru do $1\;\m$ ide o~celé plechy, pri priemere väè¹om
+o~segmenty. Jednotlivé segmenty potom prekladáme cez seba tak, aby sa
+stator nerozpadol.
+
+Medzi kusovou a sériovou výrobou je aj v~tom, ¾e do sériovej mô¾me viac
+investova» a náklady sa èasom vrátia. Je treba si uvedomi» výroba èoho
+je kusová: stroja, alebo plechov? Jeden veµký stroj mô¾e by» zlo¾ený
+z~niekoµko stoviek a¾ tisícok plechov. Kusová výroba strojov teda vy¾aduje
+sériovú výrobu plechov.
+
+Jednoduché eventuálne zlo¾ené prestrihovadlá predstavujú malú
+produktivitu a eventuálne aj malú presnos». Z~hµadiska tuhosti a
+presnosti sa sna¾íme voli» optimálny sled operácií. Razenie viac drá¾ok
+naraz je síce presnej¹ie a predstavuje väè¹iu produktivitu, no
+jednoduchá drá¾kovaèka je cenovo dostupnej¹ia. Cenovo výhodnej¹ie je aj
+nahradenie prestrihovadiel kruhovými no¾nicami (ale prestrihovadlá
+predstavujú väè¹iu kvalitu).
+
+Medzi rotorom a statorom asynchrónneho motoru je vzduchová medzera. Je
+malá a preto musia by» obe èasti veµmi presné --- aby nedochádzalo
+k~oderom a podobne. Preto je potrebné rotor sústru¾i».
+
+Z~plechu pre magnetické obvody predpripravíme ¹tvorec. V~òom je
+naznaèená drá¾ka (na vonkaj¹om obvode), slú¾i ako pomôcka pre ïaµ¹iu
+manipuláciu s~plechom. Priestri¾níkom a priestri¾nicou vyrazíme otvor
+pre rotorový hriadeµ. Vyrazený plech spadne pod lis. Okraj ¹tvorca je
+vyhodený vyhadzovaèom (pru¾iny). Taktie¾ vylisujeme drá¾ku pre pero
+(slú¾i na prenos momentu z~hriadeµu). Potom plech vlo¾íme do
+drá¾kovaèky, v~nej sa bude postupne otáèa» a stroj vydrá¾kuje celý
+obvod. Potom ïal¹í stroj rozdelí tento plech na dve èasti: na plech pre
+stator a pre rotor. Medzi oboma kusmi chýba vzduchová medzera, presne do
+seba zapadajú. Následne ïal¹í stroj vyrazí drá¾ky v~plechu pre rotor.
+E¹te ostáva vytvorenie vzduchovej medzery. To sa spraví tak, ¾e po
+osadení plechov do paketu sa osústru¾ia. Pri tom sa plechy na okraji
+skratujú. Nie je to a¾ taký problém, preto¾e v~rotore je malá sklzová
+frekvencia a preto sa v~rotore straty vírivými prúdmi príli¹
+neuplatòujú.
+
+\obrazok{Razenie plechu pre stator a rotor z~plechu ¹tvorcového
+tvaru.}{strihanie-plechov-zo-stvorca.pdf}
+
+Stator hydroalternátoru je veµký a je teda zlo¾ený zo segmentov. Má
+hlboké drá¾ky. Ako budeme vyrá¾a» taký plech? Zále¾í to na tom aké
+budeme ma» dostupné zariadenia. Ak budeme chcie» vyrába» veµké poèty
+plechov, mô¾me vytvori» ¹peciálny stroj, ktorý ich vyrazí naraz. Taký
+stroj ale bude veµmi drahý a jeho výroba a brúsenie by boli veµmi
+nákladné. Oplatí sa to teda len pri veµkej výrobe plechov (mô¾e to
+plati» aj pre kusovú výrobu strojov, jeden stroj obsahuje veµké mno¾stvo
+plechov). Ak nechceme stroj, ktorý by vyrazil celý plech naraz, mô¾me
+razi» postupne drá¾ku po drá¾ke pomocou drá¾kovaèky.
+
+Keï budeme plechy sklada» (väè¹inou ide o~ruènú prácu, automatizácia je
+nároèná) tak bude kostra postavená na zvislo. Plechy budeme segment po
+segmente sklada» na seba --- mô¾u ich by» tisíce.
+
+Ak majú plechy rybiny tak je nasádzanie nároèné. Robotník by toti¾ v¾dy
+musel plech vynies» a¾ na vrch rotoru, tam nasadi» plech na rybinu a
+zosunú» ho dole. Preto sa pou¾íva aj nasádzanie \uv{na uchá}, je
+jednoduch¹ie.
+
+\obrazok{Rybina, nasádzanie na rybinu.}{nasadzanie-na-rybiny.pdf}
+
+\obrazok{Uchá, nasádzanie na uchá.}{nasadzanie-na-ucha.pdf}
+
+Lisy predstavujú nebezpeèné zariadenia a preto vyu¾ívajú základný
+bezpeènostný prvok: ovládanie je dvojruèné, lis pracuje len vtedy, ak
+pracovník dr¾í oboma rukami dve páky. Priviazanie alebo iné mechanické
+uchytenie jednej alebo oboch pák je poru¹enie bezpeènostných predpisov a
+v~hor¹ích prípadoch mô¾e vies» a¾ k~amputácii rúk.
+
+\section Plechy pre toèivé elektrické stroje v~sériovej a hromadnej
+výrobe
+
+Pôjde najmä o~men¹ie stroje, hlavne o~asynchrónne motory.
+
+Postupová výroba: je produktívnej¹ia, ale s~men¹ou presnos»ou. Máme
+nastrihané pásy plechu (pri malých strojoch je priemer väè¹inou men¹í
+ne¾ rozmery plechu ktorý kúpime). Pás sa posúva a postupne sa na òom
+vykonávajú operácie. Lis mô¾e ma» aj niekoµko priestri¾níkov a vyrazi»
+viac vecí naraz, ale ide o~tú istú operáciu.
+
+Zdru¾ené prestrihovadlá sú väè¹ie stroje s~väè¹ími nárokmi na presnos».
+Takýto stroj robí viac vecí naraz, napríklad v¹etky statorové/rotorové
+drá¾ky naraz. Takéto stroje sú drahé a ich automatizácia je obtia¾na.
+Taktie¾ je problematické brúsenie.
+
+Pólové nástavce mô¾u by» plné (z~jedného masívneho kusu) alebo
+z~plechov. Tieto plechy je tie¾ treba razi».
+
+Plechy pre asynchrónne motory majú kruhové drá¾ky, ktoré sú mierne
+natoèené/skrútené --- zlep¹uje to vlastnosti pri zábere. Do nich je pod
+tlakom nastriekaný tekutý hliník z~ktorého sú taktie¾ lopatky
+chladiacich ventilátorov a vyva¾ovacie nity.
+
+\section Plechy pre transformátory
+
+Pou¾ívajú sa plechy orientované, za studena valcované. Sú anizotropné,
+v~smere valcovania majú najlep¹ie magnetické vlastnosti. V~prípade
+transformátorov to je výhodné, preto¾e segmenty sú lineárne a nie
+kruhové ako v~prípade toèivých strojov. Plech teda vyu¾ívame len
+v~jednom smere.
+
+Ideálnym tvarom by bol toroid, prípadne jadro zlo¾ené z~dvoch èastí
+v~tvare písmena \uv{C}, ale nie pre veµké výkony.
+
+\obrazok{Toroidové jadro.}{toroidne-jadro.pdf}
+
+\obrazok{Jadro typu \uv{C.}}{C-jadro.pdf}
+
+Ïal¹ou mo¾nos»ou ako vyhotovi» transformátorové jadro spoèíva v~pou¾ití
+plechov v~tvare písmena \uv{E} a \uv{I} respektíve \uv{C} a \uv{T}.
+
+\obrazok{Transformátorové jadro EI.}{EI-plechy.pdf}
+
+\obrazok{Transformátorové jadro CT.}{CT-plechy.pdf}
+
+Magnetické obvody najväè¹ích transformátorov musia ma» e¹te men¹ie
+straty a preto sú zlo¾ené z~rovných èastí. Je potreba upravi» okraje a
+hrany a odstráni» otrepy (nebezpeèie skratovania). Mo¾ným rie¹ením je
+napríklad brúsenie, alebo valcovanie.
+
+Ak orientovaný plech striháme alebo sa pri prená¹aní ohne, narastú
+straty. Straty jedného plechu síce vzrastú málo, ale plechov je tam
+veµmi veµa. ®íhaním pri teplote $800$--$900\;\stC$ sa vlastnosti plechu
+buï vrátia na pôvodnú hodnotu (pred neopatrnou manipuláciou) alebo sa
+zlep¹ia.
+
+Následnej je mo¾né z~plechov vytvori» celý magnetický obvod. Kedysi sa
+plechy v~rohoch preplátovali, no to priná¹alo zhor¹enie magnetického
+toku a zväè¹enie strát (tok v~rohu \uv{zatáèa} a nesmeroval v~ideálnom
+smere valcovania). Preto sa zaèalo pou¾íva» skladanie so ¹ikmým strihom.
+
+\obrazok{Magnetický obvod transformátoru, preplátovanie
+v~rohu.}{preplatovanie-v-rohu.pdf}
+
+\obrazok{Magnetický obvod transformátoru, ¹ikmý strih.}{sikmy-strih.pdf}
+
+\section Zostavovanie magnetických obvodov elektrických toèivých strojov
+
+Je rozdiel v~tom, èi ide o~veµký alebo malý motor. Je ale treba
+dodr¾iava» v¹eobecné zásady: plechy je treba izolova», lakova» a su¹i» a
+stiahnu» (skrutkami, pneumaticky, hydraulicky).
+
+Zásadným problémom je presnos». Drá¾ky vo v¹etkých vrstvách musia by» na
+rovnakých pozíciách. Kusová výroba je menej presná ne¾ výroba hromadná.
+Pri hromadnej výrobe je na obvode plechu znaèka, aby bolo pri skladaní
+vidie» ako boli plechy pôvodne razené (tak budú drá¾ky nad sebou
+v~najlep¹om mo¾nom usporiadaní, v~prípade, ¾e nie sú vzdialenosti medzi
+v¹etkými drá¾kami rovnaké, èo èasto nie sú).
+
+\obrazok{Statorový paket so znaèkou na obvode.}{paket-so-znackou.pdf}
+
+\section Statory z~kruhových výliskov
+
+V~prípade väè¹ích strojov ide najmä o~skladanie v~kostre. Ale v~prípade
+malých strojov sa sna¾íme vytvori» samonosný paket mimo kostru.
+
+Aby bol paket samonosný, je ho treba nejakým spôsobom stiahnu» na
+predpísanú silu. Pou¾itie skrutiek by bolo nevhodné a volí sa iný
+postup. Do vonkaj¹ieho obvodu statoru vytvoríme drá¾ku a vlo¾íme do nej
+oceµový pás, na koncoch ohnutý. Väè¹iu mechanickú pevnos» má {\it
+bombírovaný} pás. Skratovanie plechov nie je príli¹ veµké.
+
+\obrazok{Statorový segment s~drá¾kou pre
+pás.}{statorovy-segment-s-drazkou-pre-pas.pdf}
+
+\obrazok{Statorový paket s~pásom.}{paket-s-pasom.pdf}
+
+\obrazok{Bombírovaný prierez pásu.}{bombirovany-pas.pdf}
+
+Skladanie mimo kostru je trendom najmä pre malé stroje. Aby boli drá¾ky
+nad sebou, pou¾ijeme pravítka. Èasto majú tvar drá¾ky, nasadíme ich do
+troch mieste na obvode. Potom plechy hydraulickým lisom stlaèíme. Práca
+s~paketom je jednoduch¹ia pri navíjaní (mô¾e by» automatizované) aj pri
+impregnácii vinutí.
+
+\section Skladanie rotorov z~kruhových výliskov
+
+Rotory s~hliníkovými klietkami (odstreknuté z~hliníku, hliník je liaty
+pod tlakom do formy pri pôsobení odstredivej sily alebo vibrácií, aby sa
+lep¹ie usadil) bývajú pootoèené so ¹ikmými drá¾kami, aby bol záber
+rovnomerný. V¹etky tyèe sú skratované dvoma skratovacími kruhmi. Na
+okrajoch sú, odliate z~hliníku zároveò s~vinutím, lopatky ventilátoru
+(chladenie) a prípadne kolíky na výva¾ky.
+
+Chladi» je treba aj stator. Medzi plechmi, ktoré sú v~nejakom poète
+naskladané vedµa seba v~niekoµkých skupinách, sú malé vzduchové kanáliky
+--- prúdi nimi vzduch a chladí magnetický obvod. Sú realizované pomocou
+plechov s~di¹tanènými vlo¾kami.
+
+\obrazok{Rotor asynchrónneho motoru so skratovacími
+krú¾kami.}{asynchronny-rotor-s-kruzkami.pdf}
+
+Èelá statorového vinutia majú tvar evolvent a ich då¾ka býva a¾
+$1{,}5\;\m$. Vytvárajú tvar ko¹a a nazývajú sa teda ko¹ové vinutia.
+
+\section Skladanie magnetických obvodov transformátorov
+
+Predpokladajme, ¾e sme pre¹li fázami nákupu a strihania plechov. Teraz
+nás èaká fáza skladania. V¹etky stredné a veµké transformátory majú
+orientovaný plech s~Gossovou ¹truktúrou, ide o~kvalitné, orientované,
+kremíkové plechy. Sú nastrihané na rovné èasti aby boli èo najlep¹ie
+vyu¾ité ich magnetické vlastnosti (aby smer magnetického toku zodpovedal
+smeru valcovania).
+
+Plechy mô¾me sklada» {\it na tupo}. Plechy sú zostrihnuté kolmo a pri
+pou¾ití orientovaného plechu (má men¹ie straty a lep¹ie sýtenie, preto
+na magnetické obvody transformátorov pou¾ívame v~podstate len takéto
+plechy) v~rohoch neteèie magnetický tok v~smere orientácie plechu.
+Vznikajú takzvané prídavné straty v~rohoch. Zmieròujeme ich tak, ¾e
+plechy v~rohoch striháme pod uhlom $45\;\st$ a skladajú sa tak, aby
+plechy na seba dobre zapadali.
+
+\obrazok{Skladanie transformátoru
+s~preplátovaním.}{transformator-s-preplatovanim.pdf}
+
+\obrazok{Skladanie transformátoru so ¹ikmým
+strihom.}{transformator-so-sikmym-strihom.pdf}
+
+\section Postup skladania transformátorov
+
+Skladanie malých transformátorov nie je zlo¾ité. Väè¹inou ide o~ruènú
+prácu. Skladanie by bolo mo¾né aj zautomatizova», ale robí sa to
+málokedy.
+
+Vinutia mô¾u by» na jednej strane magnetického obvodu, ale lep¹ie
+vlastnosti má transformátor s~vinutiami na oboch stranách.
+
+\obrazok{Jednofázový jadrový
+transformátor.}{transformator-jednofazovy-jadrovy.pdf}
+
+Jednofázový plá¹»ový transformátor má obe vinutia na strednom ståpiku
+(nazýva sa jadro). Dva krajné ståpiky sa nazývajú spojky. Preto¾e
+magnetický tok sa delí do dvoch spojok, mô¾u by» men¹ie.
+
+\obrazok{Jednofázový plá¹»ový
+transformátor.}{transformator-jednofazovy-plastovy.pdf}
+
+Trojfázový jadrový transformátor je podobný na jednofázový plá¹»ový, ale
+tu sú v¹etky ståpiky jadrá. Trojfázový plá¹»ový má e¹te dva krajné
+ståpiky, ktoré slú¾ia ako spojky (sú s~men¹ím prierezom).
+
+\obrazok{Trojfázový jadrový
+transformátor.}{transformator-trojfazovy-jadrovy.pdf}
+
+\obrazok{Trojfázový plá¹»ový
+transformátor.}{transformator-trojfazovy-plastovy.pdf}
+
+Prierez plechov v~magnetickom obvode býva ¹tvorcový len v~prípade malých
+transformátorov. V~prípade väè¹ích transformátorov býva prierez
+odstupòovaný tak, aby aspoò trocha pripomínal kru¾nicu. Zlep¹ia sa tak 
+vlastnosti magnetického obvodu a èiniteµ plnenia, vinutie toti¾ nie je
+¹tvorcové ale kruhové.  
+
+\obrazok{©tvorcový a odstupòovaný prierez magnetického
+obvodu.}{prierez-magnetickym-obvodom.pdf}
+
+Jadro veµkého transformátoru mô¾e ma» hmotnos» aj desiatok ton. Musíme
+poèíta» s~tým, ¾e ho bude treba celé nadvihnú» a podµa toho voli» vhodnú
+s»ahovaciu kon¹trukciu. Táto s»ahovacia kon¹trukcia bude predpripravená
+na zemi vo vodorovnej polohe a budeme do nej rovna» jadro, plech po
+plechu, aj s~preplátovaním. Po naskladaní niekoµko centimetrovej vrstvy
+plechy stlaèíme hydraulickými lismi aby si na seba dobre sadli.
+
+Èo s~takto naskladanými plechmi? Musia dr¾a» spolu a jadro sa nesmie
+rozpadnú». Spojky mô¾me stiahnu» nejakou kon¹trukciou so skrutkou
+(neprechádza cez plech ale vonkaj¹kom). To v¹ak nie je mo¾né spravi»
+v~ståpiku jadra, preto¾e tam je treba nasadi» vinutie a ak by tam bola
+nejaká takáto kon¹trukcia tak to nie je mo¾né. Pou¾íva sa teda na to
+laminátová bandá¾. V~rôznych èastiach ståpiku sa ovinie páska a musí sa
+vytvrdi» (podobne ako keby sme robili laminátovú loï). Získame tak asi
+$5\;\cm$ vysokú tvrdú bandá¾, ktorá dr¾í plechy pohromade.
+
+Pri s»ahovaní plechov skrutkami by magnetický tok musel obchádza» dieru
+a zvy¹ovalo by to prídavné straty. Preto sa takéto rie¹enie pou¾íva len
+vo výnimoèných prípadoch.
+
+Teraz chceme na jadro umiestni» vinutie. To ale nejde bez toho, aby sme
+spojky znova rozobrali. Jeden plech po druhom vytiahneme, nasunieme
+vinutie tak, aby presne sedelo a plechy zalo¾íme naspä». Je to nároèná
+operácia.
+
+Bzuèanie transformátoru, spôsobené vibráciou plechov, by mohlo vies»
+k~lokálnemu ohriatiu a poruche celého transformátoru.
+
+Medzi klasickými plechmi mô¾u by» aj nejaké ¹peciálne di¹tanèné. Tvoria
+kanáliky pre tok chladiaceho oleja. Namiesto di¹tanèných plechov je
+mo¾né vlo¾i» medzi dva plechy nejaký predmet (tvarom mô¾e pripomína»
+napríklad magnet na magnetickú tabuµu).
+
+\section Skú¹anie magnetického obvodu
+
+Prvé skú¹anie magnetického obvodu veµkých transformátorov je e¹te pred
+rozobratím spojok a nasadením vinutia. Na jadro sa ovinie hrubý kábel
+ktorým sa jadro sna¾íme nasýti» na menovitú hodnotu $1{,}75\;\T$. Popri
+tom kontrolujeme napríklad èi je teplota magnetického obvodu rovnomerná 
+--- jednoducho dotykom, alebo termovíziou, èi oteplenie je men¹ie ne¾
+maximálne dovolené, èi sa transformátor nechveje alebo nehuèí.
+
+\section Navíjané jadrá
+
+Najlep¹ie vlastnosti má jadro toroidné. Má takmer ideálny magnetický
+obvod a malé straty. Pre veµké transformátory (veµká hmotnos») alebo pre
+transformátory trojfázové to je ale nevýhodné rie¹enie.
+
+Toroidné vinutie sa navíja pomocou ¹peciálnej toroidnej navíjaèky.
+Pripomína koleso z~bicykla bez výpletu. V~jednom mieste ho je mo¾né
+otvori» a presunú» tadiaµ jadro. Navíjaèka je ulo¾ená na niekoµkých
+kladkách a mô¾e sa otáèa». Toroidné jadro sa otáèa iným smerom a tak sa
+mô¾e veµmi rovnomerne navinú» vinutie.
+
+\obrazok{Toroidné jadro s~toroidnou navíjaèkou.}{toroidna-navijacka.pdf}
+
+Jadro C je podobné ako toroidné, ale je pretiahnuté. Je rozrezané na dva
+kusy aby bolo mo¾né jednoducho nasadi» vinutie. Potom ale nie sme
+schopní oba kusy presne spoji», plechy by sme takmer naisto skratovali.
+Hrany rezu preto presne obrúsime a vlo¾íme medzi ne tenkú izoláciu.
+Vznikne tak medzera v~magnetickom obvode, ale aj tak je takáto
+kon¹trukcia e¹te výhodná.
+
+\obrazok{Jadro typu C.}{C-jadro.pdf}
+
+\section Výroba transformátorových nádob
+
+Hranatá nádoba s~malou plochou stien sa »a¾ko chladí. Preto sa na
+transformátorové nádoby pridávajú radiátory. Ak je transformátor olejový
+tak nimi preteká olej. Okolo radiátorov prúdi vzduch a transformátor tak
+úèinnej¹ie chladí.
+
+\obrazok{Transformátor s~trubkovými radiátormi.}{trubkove-radiatory.pdf}
+
+Ak je transformátor veµký tak sa tieto radiátory vyrábajú oddelene a
+pomocou príruby sa po vyrobení pripoja. Radiátory sa podµa tvaru
+nazývajú harfy. Keï¾e preprava veµkých transformátorov je nároèná a
+nákladná, mô¾u sa harfy pripoji» a¾ po preprave na miesto urèenia.
+
+\obrazok{Transformátor s~radiátorom v~tvare
+harfy.}{harfove-radiatory.pdf}
+
+Tie najväè¹ie transformátory majú chladiè a¾ niekoµko metrov vzdialený a
+s~transformátorom je spojený trubkami, ktorými prúdi olej. Chladiè má
+ventilátor ovládaný teplotou oleja (pracovná teplota oleja je okolo
+$90\;\stC$. Ventilátorov mô¾e by» napríklad 6. Jeden z~nich je v¾dy
+zastavený a slú¾i ako rezerva. V~prevádzke sa v¾dy striedajú aby ten
+jeden rezervný nezatuhol a aby sme mali istotu, ¾e nie je pokazený.
+
+\section Póly jednosmerných strojov
+
+Z~èoho sú póly jednosmerných strojov vyrábané a ako sa pripevòujú na
+stator? Aj zosadenie, aj pripevnenie je rôzne.
+
+Pól by mohol by» masívny, ale výrobne je jednoduch¹ie ho zlo¾i»
+z~niekoµkých dosiek, ktoré sú stiahnuté. Nasunieme ho do statoru a pre to
+aby sa nemohol pohnú» ho pripevníme dvojitým klinom, pomocou
+pneumatického kladiva. Upevnenie býva na rybinu alebo na kladivo.
+
+\obrazok{Pól na statore.}{pol-na-statore.pdf}
+
+\obrazok{Pól na rotore.}{pol-na-rotore.pdf}
+
+\section Vinutie elektrických strojov netoèivých
+
+Budeme sa venova» vinutiu, spôsobu jeho výroby a izolácie a to najmä pre
+väè¹ie transformátory.
+
+Chyba v~magnetickom obvode sa prejaví pri skú¹ke tým, ¾e sa ohrieva.
+
+Na ståpik chceme nasadi» vinutia. Tie mô¾u by» sústredné alebo kotúèové.
+Sústredné vinutie má na ståpiku nasunuté primárne vinutie a na òom je
+nasunuté sekundárne vinutie. Vinutie musíme navinú» na magnetický obvod
+Vinutie vysokého napätia dávame na vonkaj¹iu stranu z~dôvodu lep¹ích
+napä»ových pomerov. Málo pou¾ívané kotúèové vinutie má úplne iný tvar,
+kotúèové cievky sa striedajú pozdå¾ celého ståpiku magnetického obvodu.
+Teda na ståpiku sú nad sebou vinutia primáru, sekundáru, primáru,
+sekundáru a tak ïalej pozdå¾ celého jadra. Kotúèové vinutie sa niekedy
+nazýva aj doskové alebo prestriedané.
+
+\obrazok{Sústredné vinutie.}{vinutie-sustredne.pdf}
+
+\obrazok{Kotúèové vinutie.}{vinutie-kotucove.pdf}
+
+Jedno vinutie tvoriace primárnu alebo sekundárnu stranu je mo¾né
+z~technologických alebo napä»ových dôvodov rozdeli» na niekoµko sekcií.
+Tie je potom samozrejme treba spoji» a to nie jeednoduché. Je to teda
+nevýhoda delenia vinutia na sekcie. Spojka mô¾e vies» pozdå¾ celého
+magnetického obvodu, to je ale nároèné na realizáciu. Druhou mo¾nos»ou
+je spojky pou¾i» len na jednej strane, to v¹ak priná¹a problém v~tom, ¾e
+medzi vinutím mô¾e by» napätie dvoch sekcií (nebezpeèie prierazu).
+
+\obrazok{Spájanie sekcií vinutí.}{vinutie-spajanie-sekcii.pdf}
+
+\section ©tandardné problémy pri navíjaní
+
+Pri zvy¹ovaní menovitého napätia je potrebné vinutia dôkladnej¹ie
+izolova». Pri náraste prúdu je potrebné pou¾íva» paralelné vodièe
+(zabránenie povrchovému efektu) a e¹te k~tomu je potrebné ich
+preusporiada» (permutova»). Narastajúci prúd taktie¾ priná¹a problém
+narastajúceho oteplenia a teda potrebu chladenia --- niektoré vinutia
+sú duté a preteká nimi chladiace médium. Taktie¾ treba myslie» na sily
+ktoré mô¾u v~transformátore pôsobi» a pou¾íva» podµa toho vhodné bandá¾e
+a s»ahovacie kon¹trukcie.
+
+\section Valcové vinutia
+
+Jadro z~magnetického plechu je odstupòované tak, aby pripomínalo kruh.
+Zlep¹uje to plnenie. Jadro musí nieèo dr¾a» pokope, napríklad laminátová
+bandá¾. Keï¾e transformátor je veµký, je treba ho úèinne chladi». Aby
+bolo mo¾né chladi» aj vinutie, je potrebné vytvori» chladiace kanáliky.
+Vytvoríme ich tak, ¾e na valec (buï magnetický obvod alebo samotné
+vinutie) vlo¾íme li¹ty z~tvrdého bukového dreva alebo tvrdenej tkaniny.
+Li¹ty privia¾eme aby dr¾ali a vinutie vinieme cez ne. Vïaka li¹tám tak
+vzniknú medzery medzi niekoµkými vrstvami vinutia, nimi prúdi olej a
+chladí transformátor. Samotné li¹ty sa nedávajú v~jednej osi ale
+striedavo v~rôznych polohách. Drevo má toti¾ hor¹ie izolaèné vlastnosti
+ako olej a preto chceme vplyv dreva na izolaènú pevnos» minimalizova».
+
+V~nejakej vrstve vinutia mô¾u by» vlo¾ené li¹ty s~rybinou. Na ne sa
+nasunú nejaké vlo¾ky ktoré vytvárajú medzeru medzi závitmi vinutia (na
+vý¹ku).
+
+\section Vinutia na vysoké napätia
+
+Men¹ie transformátory majú jednoduché cievkové vinutie, pripomínajú
+cievku s~ni»ou, majú nepárny poèet polôh. Dvojcievky majú výhodu v~tom,
+¾e vývody le¾ia vonku.
+
+Väè¹ina vodièov má obdå¾nikový prierez (napríklad $2\times12 \;\mm$).
+Pracuje sa s~nimi lep¹ie ne¾ s~vodièom s~prierezom ¹tvorcovým.
+
+Spôsob ako sa vyhnú» spojkám pri veµkých vinutiach spoèíva vo voµbe
+plynulých vinutí. Spoèíva to v~navinutí a postupnom preusporiadaní
+jednotlivých závitov.
+
+\obrazok{Plynulé vinutie.}{vinutie-plynule.pdf}
+
+Veµké transformátory nemajú jeden závit z~jedného drôtu. V~jednom by sa
+toti¾ indukovali rôzne napätia v~rôznych vý¹kach. Preto je ich tam viac,
+napríklad 5 a v~svojej polohe sa postupne striedajú.
+
+\section Izolácia vinutia proti ¾elezu
+
+Ak je transformátor olejový tak ním preteká olej a zlep¹uje izolaèné
+vlastnosti. Na krajoch ale olej preteka» nemô¾e a je tam problém
+s~izoláciou. Kraje vysokonapä»ových vinutí musia by» robené tak, aby na
+nich nevznikali výboje --- napríklad zaoblením homogenizujeme elektrické
+pole tak, aby nedochádzalo k~sr¹eniu.
+
+Medzi primárne a sekundárne vinutie vkladáme tvrdé izolaèné man¾ety
+(tvarom pripomínajú cylinder bez vr¹ku) aby nenastal prieraz.
+
+\obrazok{Izolácia vinutí na krajoch.}{vinutia-izolacia.pdf}
+
+Olej je horµavý a preto nemô¾u by» niektoré veµké transformátory
+olejové, napríklad v~bani kde je nebezpeèné prostredie. V~elektrárni sú
+schopní prípadný po¾iar uhasi» rýchlo, niekedy majú na to ¹peciálnu
+hasièskú jednotku. Be¾ne pou¾ívaný olej je z~nafty (minerálny olej).
+Jeho náhrada syntetickým olejom by bola veµmi drahá. Preto sú aj
+niektoré väè¹ie transformátory zalievané.
+
+Takýto transformátor má vinutia zaliate ¾ivicou zmie¹anou s~kremenným
+pieskom. Vinutie je neopraviteµné. Samozrejme izoláciu medzi
+jednotlivými závitmi nesmieme vypusti».
+
+Teplota olejových transformátorov mô¾e by» kvôli vlastnostiam samotného
+oleja do zhruba $90\;\stC$. Teplota zalievaných transformátorov mô¾e by»
+a¾ do zhruba $150\;\stC$ a preto musí by» izolácia kvalitnej¹ia ---
+miesto papieru napríklad sklenená tkanina.
+
+Transformátor nemô¾e ma» len dva vývody (dva na primárne a dva na
+sekundárne vinutie). Na sekundárnom vinutí bývajú odboèky pre $\pm 5\;\%
+\; U_n$. Veµká èas» transformátorov má aj regulaèné vinutie. Ako ho
+spravi»? Napríklad kontakt podobne ako posuvný rezistor, ale len pre
+malé prúdy. Alebo pomocou prepínania odboèiek, pod prúdom alebo bez
+prúdu, servomotorom.
+
+V¹etky regulaèné vinutia musia by» spravené tak, aby sa neporu¹ila
+symetria vinutia (symetria je voèi rovine kolmej k~magnetickému obvodu).
+Pri jej poru¹ení by toti¾ mohli vznika» sily, ktoré by sa sna¾ili
+vinutie roztrhnú». Preto odboèky robíme tak, ¾e odpájame závity zo
+stredu vinutia. Potom dostávame dve èasti, ktoré vedú prúd: hornú a
+dolnú.
+
+Kmeòové regulaèné vinutie predstavuje základ, ktorý bude v¾dy pod
+napätím a bude ním tiec» prúd. Regulácia teda nebude od $0$ do
+$100\;\%$, ale od hodnoty urèenej týmto vinutím.
+
+Hrubý stupeò je celý jeden valec. Buï ho zapneme alebo vypneme. Budú to
+ako keby jednotlivé vinutia, ktoré dáme alebo nedáme do série. Mô¾e ich
+by» viac. Niekedy je mo¾né hrubý stupeò rozdeli» na viac èastí, ale v¾dy
+musí by» zopnutý alebo vypnutý celý. Nie je mo¾né zapoji» len polovicu
+--- poru¹ila by sa symetria.
+
+\obrazok{Kmeòové, hrubé a odboèkové
+vinutie}{vinutie-kmenove-hrube-odbocky.pdf}
+
+Odboèky predstavujú jemné nastavenie. Ako spravi» odboèky aby sme
+vypojením niekoµkých závitov neporu¹ili symetriu? Niekoµko súbe¾ných
+vodièov po celej då¾ke vinutia navinieme v~tvare ¹pirály. Závity sú teda
+vedené paralelne. Celý princíp spoèíva v~tom, ¾e ak budeme chcie»
+regulova» tak jeden z~tých paralelných vodièov buï zapneme alebo
+vypneme. Síce tam musia by» dlhé spojky (závity musia ma» zaèiatok na
+jednej strane aby nebol výsledný magnetický tok nulový), ale mô¾me
+celkom rozumne pripája» a odpája» odboèky. Spojky mô¾me skráti» tak, ¾e
+navinieme dve cievky cez seba vinuté opaèným smerom (pravotoèivá,
+µavotoèivá). Takýchto paralelných vinutí mô¾e by» aj 10, je treba ich
+vytvára» ruène.
+
+\obrazok{Paralelne vinuté
+odboèky.}{vinutie-paralelne-vinute-odbocky.pdf}
+
+\section Izolovanie vinutí
+
+Transformátory mô¾me rozdeli» na olejové a suché. Ak sa pou¾ije olej tak
+je teplota ni¾¹ia (stratil by svoje dobré izolaèné vlastnosti). K~oleju
+je mo¾né pou¾i» papier, bavlnu alebo tvrdé drevo (na li¹ty, podklady,
+podpierky). Bavlna a papier sú prírodné polyméry (z~hµadiska stabvy).
+Veµmi èasto sa tam pou¾íva e¹te aj nejaký lak. Hlavnou zlo¾kou
+kon¹trukcie je valec z~tvrdeného papieru alebo tvrdenej tkaniny (teda
+bavlna).
+
+Niektoré transformátory sú pred zaliatím do oleja impregnované
+v~polyesterových lakoch. Lak má dôle¾itú úlohu: spevòuje, lep¹ie odvádza
+teplo, zlep¹uje elektrické vlastnosti --- má lep¹iu elektrickú pevnos».
+Veµké transformátory sa ale neimpregnujú, impregnácia je toti¾ finanène
+nákladná. A~kombinácia oleja s~papierom má èasto dostatoènú elektrickú
+pevnos».
+
+Ak je teplota izolácie a vodièov vy¹¹ia, èo je prípad zalievaných
+transformátorov, mô¾e by» pri rovnakej veµkosti transformátoru výkon
+väè¹í. V~elektráròach problém s~miestom nie je, ale sú prevádzky kde je
+takéto zmen¹enie výhodou.
+
+Pri vy¹¹ích teplotách potrebujeme ale aj iné materiály (preto¾e papier,
+bavlna alebo drevo by takú teplotu zle zná¹ali). Vodiè bude ovinutý
+sklenenou tkaninou. Samotná by nestaèila, preto¾e je porézna. Presýtime
+ju polyesterovým lakom, ktorý dostatoène dlho zná¹a vy¹¹iu teplotou. Ak
+by sme chceli teploty e¹te väè¹ie tak pou¾ijeme sklenenú tkaninu
+impregnovanú silikónovým lakom. Pre veµmi vysoké teploty je mo¾né pou¾i»
+teflonovú izoláciu, ale je to skôr výnimoèný prípad.
+
+Najkritickej¹ím miestom sú vstupné závity, pou¾ívajú sa tam teda
+tieniace kruhy.
+
+Medzi iné izolaèné komponenty patria napríklad izolaèné valce, man¾ety,
+prepá¾ky (napríklad medzikru¾ie), kanály (olejové, vzduchové),
+priechodky. Man¾ety mô¾u by» tvrdé, napríklad navinuté na oceµovom
+prstenci, alebo mäkké (teda nevytvrdené).
+
+\section Montá¾ transformátorov
+
+V~kon¹trukcii poskladáme transformátorové plechy a stiahneme (s»ahovacou
+kon¹trukciou spojky, bandá¾ou jadrá). Potom transformátor postavíme (na
+to slú¾i tá kon¹trukcia, je mo¾né ju naklápa») a vrchnú spojku
+rozoberieme. Na jadrá nasadíme vinutia a izolaèné prvky (napríklad
+izolaèné valce). Potom znova poskladáme hornú spojku (je to nároèná
+operácia, plechov je veµa a sú tenké, musia do seba presne zapada»).
+
+Potom musíme skontrolova» napríklad vinutie a jeho prevody, straty
+transformátoru prípadne jeho oteplenie. Ak vyhovuje namontujeme veko,
+priechodky a prepojovaèe.
+
+Suché transformátory impregnujeme. V~prípade malých transformátorov
+zvlá¹» vinutia a zvlá¹» celý transformátor, v~prípade transformátorov
+veµkých impregnujeme dva krát vinutia.
+
+Olejové transformátory plníme olejom. Veµké transformátory èasto a¾ tam,
+kde budú zabudované. Jedným z~dôvodov je jednoduch¹ia preprava
+transformátoru bez oleja (olej má veµkú hmotnos»). Po vysu¹ení
+transformátoru (teplým vzduchom, vákuové, v~parách kerosínu) v~továrni
+sa celý umiestni do hermeticky uzatvorenej nádoby a naplní sa
+s~pretlakom oxidom uhlièitým alebo dusíkom. Potom sa zaène plni» olejom
+(v~továrni alebo na mieste urèenia). Olej musí by» zbavený vlhkosti
+(suchý), neèistôt a plynov. Ak olej nemá dostatoèné izolaèné vlastnosti
+(skú¹ka elektrickej pevnosti) pou¾ijeme su¹ièku a pokúsime sa ho
+regenerova». Oleja napú¹»ame toµko, aby sa jeho hladina dostala a¾ do
+kondenzátoru. Kondenzátor umo¾òuje dilatáciu oleja pri zmene jeho
+teploty. V~kondenzátore je fólia respektíve blana ktorá zabraòuje oleju
+styk so vzduchom.
+
+Podµa noriem a technických podmienok prebiehajú skú¹ky transformátorov
+kusové alebo prototypové. Medzi zásadné skú¹ky patrí napríklad meranie
+naprázdno a nakrátko, tepelné skú¹ky, skú¹ky indukovaným napätím a
+prilo¾eným rázovým napätím.
+
+\section Izolaèné systémy
+
+Izolaèné systémy sa znaène zmenili, preto je na adrese 
+
+{\tt http://martin.feld.cvut.cz/$\sim$petr/Izolsyst.pdf}
+spracovaný text re¹pektujúci systémy pou¾ívané v~súèasnosti.
+
+\section Vinutia statorov striedavých elektrických strojov
+
+Prechádzame k~toèivým strojom a ich vinutiam. Je to dos» ¹pecifická
+zále¾itos» a je vhodné uvedomi» si o~akú ¹kálu pôjde.
+
+Jednosmerné vinutia budú ma» vinutia na póloch a vinutie kotvy
+s~komutátorom. To je jeden systém.
+
+V~prípade striedavých strojov pôjde o~synchrónne a asynchrónne.
+
+Synchrónne stroje budú ma» na statore striedavé vinutie, tak trocha
+podobné vinutiu v~kotve jednosmerného stroja. Na rotore budú vinuté
+póly, alebo v~prípade veµkých strojov, to budú dva hladké póly
+na výkovku s~priemerom okolo $1\;\m$ (z~dôvodu odstredivých síl) ---
+turbolaternátory, kompenzátory úèiníku. Vinutie v~rotore bude veµmi
+komplikované. Bude chladené vodíkom, vodík bude prefukova»
+rotorovým vinutím, cez vodièe. Stator bude tie¾ prefukovaný vodíkom, nie
+vodièmi ale medzerami medzi statorovými paketmi. Deionizovaná voda bude
+preteka» trubicami. Bude pod napätím a niekde sa tam bude nachádza» aj
+chladiè. Aby to bolo e¹te viac komplikované, medené vodièe budú
+rozdelené na niekoµko èastí (snaha minimalizova» vplyv vírivých prúdov),
+napríklad 24. Pritom ka¾dý ¹tvrtý bude dutý a bude ním preteka» voda.
+Ale to nie je v¹etko: tieto vodièe je potrebné stoèi» podobne ako cop
+(samotným rozdelením by sme si príli¹ nepomohli, uplatòoval by sa
+povrchový jav).
+
+V~prípade asynchrónnych motorov bude stator rovnaký ako pre synchrónny
+stroj. Rotor ale bude ma» vinutie nakrátko alebo vinutie vyvedené na
+krú¾ky. Ak bude kotva nakrátko tak bude pod tlakom odstreknutá
+z~hliníku (spolu s~lopatkami chladiacich ventilátorov). Ak bude kotva
+vinutá tak pôjde o~zlo¾itej¹í postup.
+
+Drá¾ky majú nejaký vhodný tvar aby sme do nich dokázali rozumne vlo¾i»
+vinutie. Medzi základné varianty patria drá¾ky otvorené, polootvorené a
+uzavreté. Najèastej¹ie sú drá¾ky polootvorené, do nich mô¾me otvorom
+jedno po druhom vklada» vinutia. V~prípade otvorenej drá¾ky je otvor
+¹iroký ako samotná drá¾ka, nebude zú¾ený.
+
+Otvorená drá¾ka je pri otvore prispôsobená tomu aby bolo mo¾né do nej
+zasunú» klin a vinutie v~drá¾ke upevni».
+
+\obrazok{Tvary drá¾iek --- otvorená, polootvorená a
+uzatvorená.}{drazky-tvary.pdf}
+
+Preèo to celé takto zdanlivo komplikujeme? Veï by sme mohli v¹etky
+drá¾ky spravi» otvorené a vinutie tam jednoducho vlo¾i». To by ale
+nebolo výhodné, preto¾e by to naru¹ovalo magnetický obvod. Ideálne by
+teda bolo, ak by tá medzera vôbec nebola (teda ak by sme pou¾ili
+uzatvorené drá¾ky). To v¹ak v~prípade veµkých strojov nie je mo¾né
+spravi», napríklad vinutie turborotora by sme do takejto drá¾ky vlo¾i»
+nemohli. 
+
+Vinutie mô¾e by» radiálne (ak ho vkladáme \uv{z~hora dole}) alebo
+axiálne (ak ho vkladáme \uv{z~predu do zadu}).
+
+Vinutie mô¾e do drá¾ky vklada» èlovek (závit po závite), ale to by bolo
+príli¹ pomalé a drahé. Vinutie dostáva tvar po vlo¾ení do drá¾ky. Pri
+profilových vodièoch platí, ¾e sú vopred navinuté a vytvarované. Do
+drá¾ky sa vkladajú podobne, ale majú väè¹í prierez a manipulácia s~nimi
+mô¾e by» mierne nároènej¹ia.
+
+Vinutie má èasto dve vrstvy --- hornú a spodnú. Ka¾dá vrstva patrí inej
+cievke. Najprv vlo¾íme do drá¾ky spodnú vrstvu a na òu polo¾íme vrchnú.
+
+Cievky vinutí sú rie¹ené rôzne. Majú rôzne då¾ky --- od veµkosti
+kuchynského mixéru a¾ po turboalternátor, ktorý mô¾e ma» a¾ $8\;\m$.
+Cievka a cievka teda mô¾e by» veµký rozdiel.
+
+Èo to je sústredné vinutie? Je to také, kde jedna cievka je navinutá na
+druhej, majú rovnakú os a priemer sa z~vnútra von zväè¹uje.
+
+\obrazok{Sústredné vinutie.}{cievky-sustredne.pdf}
+
+Ak je vinutie z~mäkkého vodièa kruhového prierezu tak sa èelá vinutí
+musia dotvára» a spevni». V~prípade statoru by síce nepôsobili
+odstredivé sily, ale nespevnené vinutie by sa mohlo po¹kodi».
+
+\obrazok{Jeden závit vinutia.}{vinutie-jeden-zavit.pdf}
+
+\obrazok{Plynulé vinutie, v¹etky cievky sú
+rovnaké.}{vinutie-tocive-plynule.pdf}
+
+\obrazok{Mo¾ný tvar èiel vinutí.}{vinutie-tocive-mozny-tvar-ciel.pdf}
+
+\section Vinutia men¹ích strojov
+
+Za men¹ie stroje pova¾ujeme tie s~výkonom do zhruba $500\;\kW$. Pre
+napätie do zhruba $1\;\kV$ je vinutie tvorené kruhovým vodièom
+s~priemerom do $2\;\mm$. Vinutie je vsypávané, vyu¾itie drá¾ky je men¹ie,
+napätie medzi závitmi nie je definované (jednotlivé vodièe sa
+usporiadajú viacmenej náhodne). Predstavuje ale men¹ie výrobné náklady.
+Pre napätia nad $1\;\kV$ je mo¾né vsypáva» aj profilové vodièe.
+
+Charakterom výroby pôjde skôr o~hromadnú a pou¾ijeme automatické
+navíjacie stroje. Najèastej¹ie pôjde o~asynchrónne motory s~produkciou
+napríklad $100$--$500$ kusov denne.
+
+\begram
+Niekedy sa z~politických a finanèných dôvodov vyrábali motory aj
+z~hliníku. Hliník má v¹ak hor¹ie elektrické vlastnosti a pri rovnakých
+rozmeroch mal taký motor men¹í výkon. Na to, aby bol výkon rovnaký, sa
+musel hliníkový motor spravi» dlh¹í.
+\endram
+
+\section Postup výroby vinutí
+
+Vinutie toèivého stroja sa bude robi» na ¹ablóne. Èo to je taká ¹ablóna?
+Kon¹trukèný prvok, ktorý si mô¾me predstavi» ako cievky (podobné ako na
+ni»). Bude z~dreva, laminátu alebo podobného materiálu. Na ¹ablónu
+navinieme cievku ktorú chceme vyrobi», takto ju dopredu vytvorím. Aj
+mäkkú (z~tenkých vodièov), aj tú tvrdú (z~profilových vodièov). Cievky
+to budú rôzne, èasto rôzne tvarované.
+
+Potom je potreba takúto cievku roztiahnu» Rovné èasti vinutia sa uchopia
+a »ahajú. Pri tom ale chceme vytvarova» aj hlavu vinutia. Po¾adujeme,
+aby bola \uv{pekná} alebo aspoò symetrická. Na to pou¾ijeme svorku,
+ktorá ju podr¾í v~po¾adovanej polohe.
+
+Niekedy sa cievka tvaruje aj hydraulicky. Stroj na to urèený cievku sám
+roztiahne a vytvaruje.
+
+Vinutie malých strojov je robené z~vodièa kruhového prierezu. Typické
+je, ¾e ide o~medený vodiè s~prierezom do $2\;\mm$ izolovaný
+polyesterovým lakom. To znamená, ¾e má na sebe závitovú izoláciu.
+Medzizávitová izolácia je daná dvoma týmito vrstvami laku (keï sa dva
+vodièe dotýkajú tak ka¾dý \uv{prispeje tou svojou vrstvou}). Je to
+typické pre statory asynchrónnych strojov. Vraví nám to, ¾e takmer
+s~istotou budú drá¾ky polootvorené so zú¾eným otvorom.
+
+Cievky musíme do drá¾ok nejakým spôsobom vlo¾i». Predpokladajme, ¾e sme
+sicievky dopredu navinuli. Cievka bude v~tvare obdå¾nika s~dvoma vývodmi
+Takýchto sústredných cievok budeme ma» napríklad 20. Nemô¾me ich da»
+dole zo ¹ablóny, rozpadli by sa. Preto ich previa¾eme, napríklad
+bavlnenou tkaninou. Potom ich vezme robotník, rozvia¾e a jeden vodiè po
+druhom ich bude vklada» do polootvorenej drá¾ky. Zaène spodnými
+vrstvami. Keï budú v¹etky spodné cievky v~drá¾kach tak zaène do drá¾ok
+vklada» aj horné vrstvy, ktoré doteraz trèali. Nakoniec do drá¾ok
+zasunie kliny.
+
+Takto by sme to spravili ruène, ale preto¾e by to bolo veµmi nároèné,
+pou¾ívame navíjacie stroje. Ruèná práca sa uplatòuje viacmenej len pri
+opravách.
+
+Navíjací stroj mô¾e fungova» aj tak, ¾e má akúsi robotickú ruku, ktorá
+vinutie v¹íva do drá¾ok. Nie je to èastý spôsob, ale jeden z~mo¾ných.
+Sna¾íme sa pri tom, aby sme mali stator asynchrónneho stroja mali bez
+kostry --- je tak s~ním lep¹ia manipulácia.
+
+Ïal¹í mo¾ný spôsob spoèíva v~pou¾ití navíjacieho stroja na ktorom sa
+navinú sústredné cievky. Sú navinuté na akýchsi oceµových prstoch ---
+formách. Stroj navinutú cievku z~týchto foriem stiahne a na pomocnom
+zariadení prenesie cievku k~paketu. Polo¾í ju tam tak ¹ikovne, a¾ sa
+celá cievka vtiahne do drá¾ok --- v~pomocných zariadeniach sú ¹peciálne
+dr¾iaky, ktoré tomu napomáhajú. Potom sa navinie ïal¹ia vrstva, zoberie
+sa z~navíjaèky a do drá¾ok sa vtiahne aj tá.
+
+Ako zabezpeèíme to, aby sa pri takejto manipulácii neodrel z~vinutia
+lak? Pri tom v»ahovaní je v~drá¾ke umiestnené korýtko. Je to takzvaná
+drá¾ková izolácia (izolácia fáze oproti zemi). Je tvorená rôzne, mô¾e
+tam by» nastriekaný nejaký polyamid, mô¾e tam by» polyesterová fólia a
+na nej naplátovaná roho¾ z~polyesterovej tkaniny. Z~takéhoto materiálu
+materiálu vystrihneme obdå¾nik a v~¹peciálnom zariadení vytvarujeme
+korýtko. Ono to je mäkké, tak¾e sa dá dobre ohýba». Takto pripravené
+korýtka nejakým strojom vlo¾íme do drá¾ok. Èo bude s~korýtkami po
+vlo¾ení v¹etkých vinutí? Zaklopíme ich a nad ne zarazíme kliny.
+Komplikácia mô¾e by» v~tom, ¾e medzi spodnou a hornou vrstvou je e¹te
+jedna izolácia.
+
+\section Vinutia väè¹ích elektrických strojov
+
+Urèite budú na vy¹¹ie napätia, aspoò $6$--$24\;\kV$ zdru¾eného napätia.
+Preèo sa nepou¾ívajú napätia vy¹¹ie? Vy¾adovali by veµmi zlo¾itý
+izolaèný systém.
+
+Tu korýtka u¾ väè¹inou nebudú, izolácia bude na cievke a drá¾ky budú
+väè¹inou otvorené. Izolácia bude z~nejakého pevného materiálu (èasto
+kombinácia sµudy, sklenenej tkaniny a epoxidu alebo polyesteru).
+
+Takáto cievka bude dlhá a »a¾ká. Je treba dáva» pozor pri jej prená¹aní,
+preto¾e prípadný priehyb by mohol po¹kodi» izoláciu.
+
+Pri výrobe re¹pektujeme niektoré zásady: vinutia pre vy¹¹ie napätia
+vytvárame z~profilového vodièa a cievku vytvarujeme dopredu. Bude ma»
+závitovú izoláciu nie len z~laku (to by bolo veµmi málo). Ak bude
+závitov viac, bude medzizávitová izolácia väè¹inou zo sklenenej
+tkaniny. To väè¹inou nestaèí, tak¾e je tkanina omotaná s~prekrytím a
+impregnovaná lakom, väè¹inou na bázi polyesteru.
+
+Pri pohµade na stator z~hora sú èelá a hlavy ohnuté a zdvihnuté --- majú
+toti¾ vytvára» kô¹, takzvané ko¹ové vinutie. V~prípade malých strojov to
+tak nebude, vinutie tam bude mäkké.
+
+\section Postup výroby vinutí s~nespojitou izoláciou
+
+Pôjde o~vytváranie drá¾kovej izolácie na cievky, ktorých ¹írka mô¾e by»
+aj $5\;\m$. Nedá sa vytvori» dopredu, ale a¾ keï je cievka vytvarovaná a
+má vyhnuté èelá. Výroba je nároèná a finanène nákladná.
+
+Èo znamená, ¾e izolácia je nespojitá? Nespojitos» je v~tom, ¾e sa najprv
+robí izolácia drá¾ková a a¾ potom izolácia èiel a hláv. Drá¾ková
+izolácia nekonèí tam kde konèí drá¾ka, ale je mierne dlh¹ia,
+pretiahnutá. Ide o~nanesenie hlavnej drá¾kovej izolácie, robí sa vo
+vyhrievaných lisoch alebo separáciou. Cievku aj s~izoláciou vlo¾íme do
+formy v~ktorej prebehne vytvrdenie. Nároky na formu sú veµmi vysoké,
+mô¾e ma» då¾ku a¾ $12\;\m$ a musí by» presne vybrúsená. Separácia  slú¾i
+na to, aby sme mohli cievku z~formy po vytvrdení vybra» (podobne ako pri
+peèení koláèov vytrieme formu). Takto vytvrdíme len tú èas» vinutia
+ktorá bude v~drá¾ke. Forma teda mô¾e by» rovná, èo je jednoduch¹ie.
+
+Hrúbku izolácie volíme podµa veµkosti napätia. Obvykle býva jednostranná
+hrúbka izolácie do $8\;\mm$. Celá izolácia má vlastne tvar hranatej
+trubky. Ako ju vytvárame? Vezmeme list izolácie (sklenené vlákno, sµuda,
+\dots) a toèením ju nabalíme na vinutie. Pri tom ju musíme napína».
+Takto pripravené vinutie vlo¾íme do lisu. Problém ale je, ¾e izolácia
+je obdå¾niková, lis musí tlaèi» zo v¹etkých ¹tyroch strán. Vyrobi» lis
+ktorý by to dokázal, pri takej då¾ke, je nároèné --- musí by» veµmi
+presný.
+
+\obrazok{Prierez vinutím s~lisovanou
+izoláciou.}{vinutie-s-lisovanou-izolaciou-prierez.pdf}
+
+Na koncoch tejto rovnej èasti vinutí musíme izoláciu oreza» do ¹pièky,
+vytvori» kónusy. Zaèneme tam toti¾ ovíja» èelá a bez orezania by bol
+medzi oboma èas»ami izolácie veµmi zlý prechod.
+
+\obrazok{Izolácia vinutia, èas» v~drá¾ke a ovinuté
+èelá.}{izolacia-ciel-a-vinuti-v-drazke.pdf}
+
+Cievka le¾í na nejakej podlo¾ke a niekto ju ovíja --- buï ruène, alebo
+pomocou malého stroju (robota). Mierne problematické ovíjanie je
+v~oblasti èiel, tam musí robotník stroju pomôc». Páska ktorou vinutie
+ovíjame je zo savého materiálu (aby sala lak pri impregnácii). Jej ¹írka
+mô¾e by» napríklad $2\;\cm$. Poèet závitov má by» taký, aby bola hrúbka
+izolácie na èelách a na rovnej èasti pribli¾ne rovnaká (a preto¾e
+izolácia na èelách má men¹iu elektrickú pevnos» mô¾e by» aj hrub¹ia).
+
+Zároveò by sme chceli, aby izolácia bola èo najten¹ia --- tak by bolo
+plnenie drá¾ok najlep¹ie. ®iadna izolácia ale nie je dokonalá a preto
+musíme ale voli» kompromis medzi plnením drá¾ok a izolaènými
+vlastnos»ami.
+
+V~prípade vysokonapä»ových potierame èas» izolácie v~drá¾ke grafitovm
+náterom. Èím vy¹¹ie je napätie, tým men¹ie prúdy teèú (to je dobré), ale
+izolácia musí by» oveµa lep¹ia. Ak by sme do drá¾ky vlo¾ili vinutie
+(zaklepali gumovým kladivom tak, aby tam èo najlep¹ie sedelo) bez
+grafitového náteru tak by sa mohlo sta», ¾e medzi vinutím a statorovými
+plechmi by dochádzalo k~èiastoèným výbojom (v~ideálnom stave by vinutie
+a drá¾ka mali taký tvar, ¾e by dokonalo zapadali; ale aj ak sa sna¾íme
+nikdy sa nám to nepodarí a medzi drá¾kou a izoláciou vzniknú vzduchové
+bublinky). Izoláciu by tak mohli postupne \uv{rozo¾ra»}, podobne ako
+keby ich okusovala my¹. Grafitovým náterom tomuto zabránime, preto¾e sa
+tak izolácia a plechy dostanú na rovnaký potenciál.
+
+Grafit má elektrickú vodivos» niekde na pomedzí izolantu a vodièa ---
+nie je to èistý vodiè, ale ani izolant.
+
+Tieto nátery sa niekedy robia aj s~odstupòovaním vodivosti pri konci
+drá¾ky --- zlep¹uje sa tak gradient prechodu.
+
+\section Postup výroby vinutia so spojitou izoláciou
+
+V~prípade spojitej izolácia celé vinutie dokola ovíjame páskou, aj
+v~rovnej èasti ktorú vlo¾íme do drá¾ky. Táto páska nebude v~jednej vrstve,
+ale bude s~prekrytím (polovièným alebo tretinovým). Páska býva vyrobená
+z~sklenenej tkaniny, sµudy a epoxidovej ¾ivice.
+
+Je niekoµko ciest ako takúto izoláciu spravi». Mô¾me celé vinutie ovíja»
+páskou. Cievka le¾í (veµkosti sú rôzne, tie najväè¹ie a¾ niekoµko
+metrov) na nejakej podlo¾ke a robotníci ju ovíjajú. Pre zjednodu¹enie
+práce pou¾ívajú navíjací strojèek (vedú ho), ktorý s~presným prekrytím
+ovinie celé vinutie. Na jednom vinutí mô¾u pracova» napríklad traja
+robotníci s~troma strojèekmi, ¹etria tak èas.
+
+Ak má cievka jeden závit, tak má len jednu hlavu (druhá by vznikla a¾
+pri väè¹om poète závitov). Cievky sa niekedy vytvárajú ako polovice a
+spájajú sa a¾ v~stroji. Preto¾e budú polovièné, nazývajú sa
+\uv{polcievka} alebo tyè. Ich èelá majú tvar evolventy.
+
+Cievky pri navíjaní visia na niekoµkých závesoch. Musia by»
+odopínateµné, aby robotníci mohli pozdå¾ celého vinutia omota» izolaènú
+pásku. 
+
+Pomocný strojèek na omotávanie má kolieska podobné tým na kolieskových
+korèuliach. Tento strojèek sa vedie sám, ruène by sme nevedeli dodr¾a»
+presne stanovený posun. Ruèné dr¾anie je teda len pomocné, neriadi
+prekryv.
+
+Páska ktorou vinutie ovíjame je z~porézneho savého materiálu. Je to
+výhodné pri impregnácii --- èím sú póry men¹ie, tým lep¹ie nasáva
+impregnant.
+
+Táto metóda so spojitou izoláciou nebude tak presná ako v~prípade
+nespojitej izolácie. Vinutie bude síce v~drá¾ke sedie», ale nevyplní ju
+tak dobre. Je to nevýhoda tejto metódy. Zlep¹enie mô¾me dosiahnu», ak
+vinutie ovinieme takou páskou ktorú mô¾me následne zlisova».
+
+Takto pripravené izolované vinutie je treba zasadi» do statoru. Väè¹inou
+ide o~ruènú prácu, automatický stroj by bol príli¹ komplikovaný. Do
+drá¾ky, celkom logicky, treba vlo¾i» najprv spodnú a potom hornú vrstvu
+vinutia. Pri práci musí by» robotník opatrný, aby cievku (a hlavne jej
+izoláciu) nepo¹kodil. Taktie¾ je potrebné dáva» pozor na to, aby sa
+cievka neprehla. Izolácia by toti¾ mohla popraska» a to by malo veµmi
+zlé následky na kvalitu.
+
+Vytvorili sme teda polcievky a zasadili ich do statoru. Hlavy ale
+potrebujeme nejak spoji», ako na to? Aby to nebolo jednoduché, jeden
+\uv{vodiè} cievky je tvorený z~viacerých paralelných vodièov, prierez je
+napríklad $2 \times 6\;\cm$. V~mieste hlavy sa stretnú dva takéto konce
+a je potrebné ich spoji». Ïal¹í problém predstavujú vodièe, ktoré sú
+duté a preteká nimi chladiaca tekutina. Mohli by sme ku ka¾dej hlave
+pripoji» dlhú hadicu. To by bolo ale znaène nepraktické. Preto na hlavy
+pripojíme zberacie kruhy (nieèo podobné ako gymnastická obruè). Sú tam
+dva, hlavy sú do nich zapojené striedavo tak, aby kvapalina tiekla
+v~ka¾dej drá¾ke opaèným smerom --- aby neboli vinutia na jednej strane
+horúce a na druhej strane chladné.
+
+\section Tyèové vinutia
+
+Ide o~Roeblove tyèe. Mô¾me ich vidie» zhruba v~$90\;\%$ alternátorov a
+kompenzátorov úèinníku. Sú väè¹inou dvojpólové stroje, s~$3000\;\otmin$
+pri frekvencii $50\;\Hz$, a cievky v~nich mávajú jeden závit. Výroba je
+zalo¾ená na dvoch tyèiach a obe budú Roeblove. Celá výroba je
+komplikovaná tým, ¾e pri veµkých výkonoch vychádza veµký priemer.
+
+\begram
+Roeblove tyèe nie sú majetok pána Roebla, sú po òom iba pomenované.
+\endram
+
+Ak by sme vinutie vytvorili z~jedného medeného výkovku tak by sa
+v~ka¾dej håbke indukovalo iné napätie. Vinutie teda musíme deli», podobne
+ako v~transformátoroch (presmykané vinutie). V~prípade transformátorov
+v¹ak bol relatívne dostatoèný priestor. Prehadzovanie jednotlivých
+paralelných èastí vinutia je v~prípade toèivých strojov ale veµmi
+nároèné --- drá¾ka je úzka a dlhá. Je to komplikované a jedno z~mnohých
+rie¹ení na¹iel práve Roebel.
+
+Jedna cievka je delená na dve polcievky. Obe vyrobíme oddelene a potom
+ich navzájom \uv{zapletieme}. Prestriedavanie je na¹tastie potrebné
+robi» len v~tej èasti, ktorá zapadne do drá¾ky --- tam, kde je cievka
+mimo magnetického obvodu u¾ prestriedanie nie je potrebné, tam sa
+napätie neindukuje.
+
+Vrchný pás vedieme dole, tam sa posunie na stranu (buï doprava alebo
+doµava) a smeruje hore. Horná a spodná strana celej takto zvinutej
+cievky je \uv{hrbolatá} a vznikajú tam medzery kde by sa mohol dosta»
+vzduch. Preto cievku zagitujeme tak, aby bola rovná.
+
+\obrazok{Roeblove vinutie z~predu.}{roeblove-tyce-zpredu.pdf}
+
+\obrazok{Roeblove vinutie z~boku.}{roeblove-tyce-z-boku.pdf}
+
+\obrazok{Roeblove vinutie z~hora/dola.}{roeblove-tyce-z-hora.pdf}
+
+Ako dve èasti tejto cievky skladáme? Pripravené vodièe (napríklad 20
+kusov) nare¾eme a polo¾íme na stôl. Potom na nich musíme dopredu spravi»
+\uv{výhybky}. Budeme bra» jeden vodiè za druhým a podla pripraveného
+plánu na nich robi» výhybky. Potom ich robotník polovicu zoberie a
+spletie jednu ¹tvrtinu --- celá Roeblova tyè by ne¹la vytvori» naraz.
+Potom spletie aj druhú polovicu a nakoniec oba tieto kusy spojí
+dohromady. Takýchto tyèí bude v~jednom stroji napríklad $200$ a¾ $400$.
+
+Izolova» Roeblove tyèe je mo¾né a¾ po ich spletení. To je trocha
+problém. Izolaèné pásky niekedy za¹upávame z~boku (ide o~tie malé
+vodièe, ktoré skladáme). Nároènej¹ie je dosta» izoláciu medzi dve
+polovice Roeblovej tyèe.
+
+Vlastnos»ou Roeblovych tyèí je to, ¾e umo¾òujú prestrieda» delené
+vinutie v~malom priestore drá¾ky. Výsledkom je jedna tyè zlo¾ená z~dvoch
+èastí. Izolácia medzi týmito èas»ami sa vkladá väè¹inou a¾ po ich
+zlo¾ení z~boku.
+
+Toto cyklovanie prebieha len v~då¾ke drá¾ky, èelo je evolventné a u¾ sa
+v~òom vodiè nepreplieta. Na konci sa dve polcievky (na jednej strane, na
+druhej to ide do inej) vodivo spoja --- spájkovanie alebo zváranie.
+Niektoré vodièe sú duté a preteká nimi chladiaca, deionizovaná
+destilovaná voda. V~hlave idú v¹etky vodièe do nejakej krabice, kde sa
+voda zbiera a odteká do zberných kruhov. Aby nebola jedna strana teplá a
+druhá studená sú kruhy dva na oboch stranách --- do jedného je odvádzaná
+voda z~ka¾dej druhej tyèe a v~susedných drá¾kach teèie voda opaèným
+smerom.
+
+\section Poznámky k~tyèovým vinutiam
+
+Pri tepelnom namáhaní a dilatácii mô¾e dôjs» k~odtrhnutiu izolácie.
+Problémom mô¾e by» prechod z~drá¾kovej èasti do èasti evolventnej,
+rie¹ením je odstupòovaný náter grafitovým lakom.
+
+Trendom je pou¾ívanie suchej pásky, vákuová respektíve vákuovo tlaková
+impregnácia, pou¾itie bezrozpú¹»adlovej ¾ivice, strojné navíjanie.
+
+\section Ochrana proti dutinovým výbojom
+
+Vznikajú starnutím izolácie. Najèastej¹ie vo vzduchových dutinkách
+v~izolácii, ale niekedy aj na jej povrchu medzi vinutím --- oizolovanou
+tyèou a ¾elezom. Medzi izolantom a ¾elezom nie je dotyk ideálny na celej
+ploche a mô¾u tam vznika» výboje. Aby v~izolácii neboli dutinky tak ju
+mô¾me zlisova» alebo impregnova». Alebo izoláciu po celej då¾ke potrieme
+a¾ ku kraju drá¾ky (s~presahom $1$--$2\;\dm$ grafitovým lakom. Grafit po
+uschnutí nie je ideálne vodivý, jeho vodivos» sa pohybuje niekde medzi
+vodivos»ou vodièa a izolantu. Takto dosiahneme to, ¾e izolácia a kostra
+budú na rovnakej napä»ovej hladine a výboje nebudú ma» dôvod vzniknú».
+V~prípade vysokonapä»ových strojov budú takéto grafitové laky pou¾ité
+takmer v¾dy, pri výstupe z~drá¾ky s~odstupòovanou vodivos»ou pre
+zlep¹enie vlastnosti elektrického pola. 
+
+\section Montá¾ vinutí
+
+Vinutia bývajú najèastej¹ie dvojvrstvé, preto do drá¾ky vlo¾íme najprv
+spodnú a potom hornú vrstvu. Tyè do drá¾ky nezapadne sama, musíme ju tam
+zatlaèi» --- zaklepaním gumovým kladivom. Vinutie v~drá¾ke nemô¾e by»
+voµne ulo¾ené, vibrovalo by a to by bolo nevhodné pre magnetický obvod.
+
+Ak sa izolácia èasom zmen¹í (scvrkne sa) tak je potreba vinutie
+zaklínova». A~to nie je ¾iadna sranda. Uvoµnenie je mo¾né mera» aj
+zvukovo aj elektricky.
+
+\obrazok{Vystu¾enie kolmých èiel vinutí. Úväz na
+spodok.}{vinutia-vystuzenie.pdf}
+
+Èelá sú v~tvare evolventy. Je to kvôli tomu aby medzery medzi èelami
+vedµa seba boli v¹ade rovnaké (toto spåòa len evolventný tvar). Vinutia
+tak vytvoria tvar ko¹a a preto sa takéto vinutie nazýva ko¹ové.
+
+Èelá sú pomocou sklenenej pásky priviazané k~spevòovacej kon¹trukcii.
+Ak potrebujeme vymeni» jednu cievku tak sa to v¹etko musí vystriha»
+(sklenená páska), rozviaza», vymeni» civevku a vlo¾i» tam novú. Je to
+nároèná operácia, na prácu aj na èas.
+
+Celkovo ide o~nároènú operáciu a montá¾ niekedy trvá aj niekoµko
+tý¾dòov.
+
+\section Izolaèné systémy
+
+\begram
+Ide o~krátky vý»ah z~materiálu na web stránkach predmetu.
+\endram
+
+Teplotné triedy izolaèných materiálov sa u¾ neznaèia písmenom. Je to
+trieda materiálu a urèuje maximálnu teplotu (nie oteplenie).
+
+Olejové transformátory pracujú pri teplote najviac do $90\;\stC$ ---
+vtedy by izolácia mala vydr¾a» po celú dobu ¾ivota (olej musí samozrejme
+by» udr¾iavaný). Doba ¾ivota je napríklad 15 rokov.
+
+Dnes väè¹ina veµkých strojov pracuje v~triede 155. Vy¹¹ie teploty majú
+èasto ¾eleznièné stroje v~trakcii. Je to preto, lebo pri vy¹¹ej
+teplotnej triede a pri zachovaní veµkosti stroja je ich výkon vy¹¹í.
+Ak transformátory nie sú olejové tak sa ich sna¾íme dosta» na vy¹¹iu
+triedu --- pri rovnakých rozmeroch dostaneme lep¹í výkon. Aby sme si
+dokázali predstavi» aký to je skok: ak stroj s~triedou 130 presunieme na
+triedu 180, tak výkon stúpne z~$600\;\kW$ na $800\;\kW$ (príklad
+trakèných strojov).
+
+V~izolaèných systémoch transformátorov sa pou¾íva aramidový papier. Je
+¹edo biely, ako keby porézny (ide o~zlisovanú roho¾ zo sklenenej tkaniny
+a polyimidov).
+
+V~prípade zalievaných transformátorov (s~výkonom zhruba do $35\;\MVA$)
+ide o~tenká zálievku epoxidom a o~sklenenú tkaninu. Teplotná trieda býva
+najèastej¹ie 155, je snaha takéto transformátory dosta» na vy¹¹ie
+výkony.
+
+V~prípade olejových transformátor olej spåòa funkciu odvodu tepla,
+zlep¹enia izolaèných vlastností a spevnenia izolácie.
+
+Èo do poètu kusov, je na svete vyrábaných najviac asynchrónnych strojov
+na malé napätie ($400\;\V$). Ako izolácia je èastá kombinácia roho¾e
+z~aramidového papieru a z~polyetyléntereftalátu. Prípadne kombinácia
+hrubej roho¾e z~polyesteru (z~polyesterových vlákien) a na nej
+priplátovaný polyetyléntereftalát. Je to jeden materiál ale dve formy:
+fólia, roho¾.
+
+Preèo nespravíme celú izoláciu z~fólie? Je to pre to, aby vinutie dobre
+sedelo v~drá¾ke. Fólia má dobré elektrické vlastnosti a tenká roho¾
+vinutie dr¾í mechanicky.
+
+Ako izolaèný systém pre vysokonapä»ové toèivé stroje sa pou¾íva
+napríklad systém resin-rich. Izolácia sa vytvára z~trojzlo¾kového
+kompozitu, zo sklenenej tkaniny, sµudového papiera a epoxidu (alebo
+polyesteru). Polovicu cievky dáme do kovovej vyhrievanej formy a
+pomocou hydrauliky rovnomerne tlaèíme po celej då¾ke poltyèe ---
+izoláciu je treba zlisova» do presného tvaru obdå¾niku. Táto izolácia je
+veµmi kompaktná a \uv{tvrdá ako betón.}
+
+Problém nastáva pri zmene teploty, keï dochádza k~dilatácii. Meï a
+izolácia v~závislosti na teplote menia svoje rozmery v~inom pomere.
+
+Systém VPI nie je tak kompaktný, ale jeho výroba je mierne jednoduch¹ia.
+Pou¾ijeme savý papier (zo $100\%$ sµudy) s~malými otvormi --- do nich
+vplyvom kapilárnych síl (èím sú póry men¹ie, tým sú sily väè¹ie) nasáva.
+Výsledný tvar nebude tak dokonale obdå¾nikový (bude hor¹ie zatlaèenie do
+drá¾ky), ale výroba je menej finanène nároèná.
+
+\section Vinutia rotorov asynchrónnych strojov
+
+Medzi základné druhy patria vinutia krú¾kové a vinutia naprázdno. Musíme
+ich spravi» tak, aby odstredivé sily celý rotor neroztrhali.
+
+Klietkové vinutie je podobné koliesku pre hlodavce, len s~tým rozdielom,
+¾e je mierne natoèené --- kvôli lep¹iemu rozbehu. Na skratovacom kruhu
+sú po obvode e¹te lopatky (tie¾ odstreknuté z~hliníku) a tvoria
+ventilátor. Na kruhu sú aj malé kolíèky, ide o~pripravené miesta na
+záva¾ia pre výva¾ky.
+
+\obrazok{Klietkové vinutie, z~boku.}{klietka-z-boku.pdf}
+
+\obrazok{Klietkové vinutie, z~predu.}{klietka-z-predu.pdf}
+
+Vzduchová medzera medzi statorom a rotorom je veµmi malá, rotor sa
+takmer v¾dy osústru¾í, preto¾e razením plechov by sme tak malú
+vzduchovú medzeru vytvorili len veµmi obtia¾ne.
+
+\section Vinutie rotorov komutátorových strojov
+
+Dostali sme sa do oblasti jednosmerných motorov a ich rotorov. Uvedomme
+si o~èo ide --- o~vinutý rotor jednosmerného stroja. Èi je veµký alebo
+malý, má komutátor a vývody cievok na komutátor.
+
+Vinutie je v~drá¾kach upevnené klinmi --- tie dr¾ia odstredivú silu.
+Èelá by sa mohli vplyvom odstredivej sily roztrhnú» a preto musia ma»
+bandá¾e alebo nejaké iné systémy, ktoré ich dr¾ia. 
+
+Výroba je odli¹ná pre malé a pre veµké stroje. Pri malých strojoch sa
+uplatòuje automatizácia, kotvu zlo¾íme z~plechov a do drá¾ok vlo¾íme
+drá¾kovú izoláciu. Vinutie pripevníme na háèikový komutátor a odporovo
+ho zvaríme. Vinutie mô¾me impregnova» zakvapkávaním (impregnant je
+kapilárne vtiahnutý do drá¾ky, nelejeme ho tam príli¹ veµa aby rotor od
+neho nebol \uv{za¹pinený}). Ako impregnant je vhodný bezrozpú¹»adlový
+lak (rozpú¹»adlo by sa vyparilo a vznikali by vzduchové bublinky). Potom
+komutátor pretoèíme a vyvá¾ime.
+
+Výroba veµkých strojov bude kusová. Vinutie bude tyèové a to buï
+sluèkové alebo vlnivé.
+
+\obrazok{Sluèkové vinutie.}{vinutie-sluckove.pdf}
+
+\obrazok{Vlnivé vinutie.}{vinutie-vlnive.pdf}
+
+Vinutie nebude väè¹inou robené pomocou automatickej navíjaèky, ale ruène
+a ruène bude taktie¾ vkladané do drá¾ok rotoru. Vyrobíme cievky
+s~èelami a potom ich oizolujeme. Takto ich vlo¾íme do otvorených drá¾ok
+(analógia so statorom). Vinutia prepojíme a vyvedieme na komutátor.
+V~prípade, ¾e rotor a komutátor nemajú rovnaký priemer pou¾ijeme na
+prepojenie takzvané praporky --- je to vodivá èas». 
+
+\obrazok{Spojenie vinutia s~komutátorom pomocou
+praporkov.}{komutator-praporky.pdf}
+
+Èelá musia by» mechanicky upevnené aby odolali toèivému pohybu. Na obvod
+dáme izoláciu, aby sa vinutie neodrelo. Na to upevníme bandá¾ --- býva
+to oceµový drôt. Navinieme ho pomocou stroja s~veµkým predpätím. Ako
+keby sme navinuli jednu vrstvu vinutia, ale z~oceµového drôtu. Ako ho
+uchyti»? Asi »a¾ko tam budeme robi» uzol a pou¾ijeme na to takzvaný
+zámok. Je to kovový plie¹ok, ktorý ohneme na koncoch tak, aby oceµový
+drôt pridà¾al.
+
+\obrazok{Pripevnenie bandá¾e pomocou zámku.}{bandaz-zamok.pdf}
+
+Cievka je ohnutá tak, aby jedna jej strana bola vo vrchnej èasti drá¾ky
+a druhá strana bola v~spodnej èasti inej drá¾ky --- teda v~jednej drá¾ke
+budú vinutia dvoch cievok.
+
+Tvary drá¾ok rotoru sú podobné ako v~prípade statoru, v~podstate sa
+nelí¹ia. Otvorené drá¾ky sa pou¾ívajú pre vkladané vinutie (aby sme ho
+tam boli schopní zasunú»). Pri otvore drá¾ky sú zárezy pre upevnenie
+klinov (teda mechanické upevnenie vinutia v~drá¾ke). Kliny bývajú
+z~veµmi pevného laminátu.
+
+Ak je vinutie vsypávané, tak je drá¾ka s~malým otvoom a vinutie tam
+vsypávame vodiè po vodièi. Po polovici vodièov do drá¾ky vlo¾íme
+medzivrstovú izoláciu. Takéto drá¾ky nazývame polootvorené respektíve
+polouzatvorené.
+
+Do polootvorenej drá¾ky mô¾me vklada» aj tvarované vinutie. Je to akýsi
+kompromis medzi vinutím vsypávaným a vkladaným --- vkladáme
+predpripravené èasti vinutia, ale sú men¹ie ne¾ celá drá¾ka.
+
+%\obrazok{Polootvorené drá¾ky.}
+
+%\obrazok{Tvarované vinutie v drá¾ke.}
+
+Klin musí by» pevne upevnený (nejde tam vsunú» voµno; ani by nesmel, aby
+náhodou nevypadol --- vinutie musí dobre mechanicky dr¾a»). Na upevnenie
+pou¾ívame gumené kladivo alebo podobný nástroj.
+
+\section Vinutia turborotorov
+
+Ide o~rotory turboalternátorov alebo kompenzátorov úèinníku. Takmer v¾dy
+ide o~dvojpólový stroj s~malým priemerom a veµkou då¾kou. Otáèky sú pri
+frekvencii $50\;\Hz$ $3000\;\otmin$.
+
+Rotor je hladký, na rozdiel od v¹etkých ostatných alternátorov (tie nie
+sú hrbolaté, ale s~vyniklými pólmi).
+
+Výkony turboalternátorov sú be¾ne zhruba od $100\;\MVA$ do $200\;\MVA$
+(mô¾u by» aj men¹ie, ale nie tak èasto). S~rastom výkonu rastie aj
+napätie na statore. Turboalternátor s~výkonom $500\;\MVA$ je v~Mìlníku a
+je to druhý najvýkonnej¹í alternátor v~republike. Je chladený vodíkom a
+vyhrieva celé Pra¾ské Ji¾ní Mìsto --- teplo sa vedie prehriatou parou,
+niekde na sídlisku je výmenník para--voda. Jeho rotor má priemer zhruba
+$1\;\m$ --- väè¹ie rotory nie sme schopní spravi», preto¾e zuby by
+nevydr¾ali tak veµkú odstredivú silu a odtrhli by sa.
+
+Tie najvýkonnej¹ie turboalternátory majú výkon okolo $1000\;\MVA$.
+
+Mo¾né zapojenie vinutí je sluèkové alebo vlnivé. Cievka mô¾e ma» aj viac
+závitov, potom by mala dve hlavy. Problémom mô¾e by» spôsob chladenia.
+
+%\obrazok{Sluèkové vinutie.}
+
+%\obrazok{Vlnivé vinutie.}
+
+V~rotore musia by» vyhotovené drá¾ky s~rozmermi a¾ niekoµkých
+centimetrov. Niekedy sú vyrobené aj pomocné drá¾ky v~ktorých buï nie je
+niè a vyrovnávajú pnutie alebo slú¾ia na chladenie (preteká nimi vodík
+alebo vzduch).
+
+\obrazok{Rotor turboalternátoru z~predu.}{turboalternator-drazky.pdf}
+
+Vinutie v~drá¾kach upevòuje bronzový klin. Do drá¾ky je zarazený
+pneumatickým kladivom. Bronz je volený z~mechanických dôvodov,
+sklolaminát pou¾ívaný v~rotore jednosmerného stroja by v~tomto prípade
+vinutie mechanicky neudr¾al).
+
+\obrazok{Drá¾ka upevnená bronzovým klinom.}{klin-v-drazke.pdf}
+
+\begram
+Bronzový klin pripomína tvarom zlaté tehlièky. Ale aj tak asi nevieme
+ako vyzerajú, preto¾e ich nemáme.
+\endram
+
+Vinutie je potreba chladi». Je vyrobené z~obdå¾nikových vodièov a teèie
+nimi pomerne veµký prúd. Vodièe musia by» od seba izolované, budú teda
+medzi nimi izolaèné vlo¾ky. Vinutie sa zároveò nesmie dotýka» hriadeµa.
+Pri otáèkach $3000\;\otmin$ sa nesmie ani pohnú», ináè by bolo treba
+celý rotor opravi» --- previnú» a vyvá¾i».
+
+Spomínané otáèky $3000\;\otmin$ sú menovité, skú¹obné otáèky sú
+$3600\;\otmin$. Celý rotor by sa roztrhol pri otáèkach okolo
+$4500\;\otmin$, je teda vidie», ¾e v~otáèkach veµká rezerva nie je.
+
+Vinutie rotoru musí by» chladené. Je niekoµko spôsobov ako to dosiahnu».
+Priame chladenie je, keï chladiace médium prefukuje priamo vodièmi,
+naprieè alebo pozdå¾. Nepriame chladenie je, keï chladiace médium fúka
+na rotor.
+
+Do zhruba $100\;\MVA$ je médiom vzduch, od $500\;\MVA$ vodík (v~oblasti
+medzi sa pou¾íva buï vzduch, buï vodík; alebo alternátory s~podobným
+výkonom nevyrábame a¾ v~tak veµkých poètoch). Voda sa na chladenie
+rotoru nepou¾íva, je to technicky nerie¹iteµné (pou¾íva sa v~statore,
+zhruba od $500\;\MVA$.
+
+Chladenie men¹ích strojov je zabezpeèované pomocou ventilátorov, ktoré
+vháòajú do rotoru vzduch.
+
+Chladiace kanály mô¾u by» axiálne, radiálne; na dne drá¾ky a mostíkové
+vodièe (s~otvormi cez ktoré mô¾e prúdi» vzduch). Na dne drá¾ky je
+vyfrézovaný kanálik. Ním je tlaèený vzduch z~boku pod kapnu (tá býva
+niekedy prevàtaná a vzduch sa cez òu dostáva aj do oblasti statoru).
+V~pásovom vinutí sú otvory --- nie je problém ich vyvàta», ale väè¹ím
+problémom je umiestni» ich tak, aby otvory sedeli nad sebou. Otvor je aj
+v~bronzovom kline.
+
+Vodík ako chladiace médium prenesie oveµa viac tepla, ale jeho pou¾itie
+je riskantné (nesmie sa zmie¹a» so vzduchom). Vodièe sú duté a musíme do
+nich ten vodík dosta» --- pomocou otvorov ktoré spravíme v~oblasti èela.
+Ostatné sa opakuje --- otvory cez bronzové kliny. Komplikácia je v~tom,
+¾e by sa tok chladiaceho média v~strede drá¾ky \uv{zrazil}. Tak¾e nejaké
+vodièe prefukujeme z~µava do prava a iné z~prava do µava.
+
+Izolácia medzi vodièmi je z~materiálu Mikanit --- ide o~sµudové plátky a
+epoxid. Aj v~nej musia by» chladiace otvory.
+
+Najväè¹í problém je, ¾e v¹etká tá izolácia sa musí vytvrdi». K~drá¾kam
+sú pripevnené pomocné oceµové pravítka, tie zatlaèia izoláciu a potom ju
+zohrejeme tak, aby sa vytvrdila. Potom z~boku zaèneme zatláèa» bronzové
+kliny. Sú z~niekoµkých dielov (ak by mal klin då¾ku $5\;\m$ tak by sme
+ho do drá¾ky zasunuli len veµmi zlo¾ito). Potom plameòom ohrejeme kapnu,
+tým zväè¹í svoj priemer, a nasadíme ju na rotor. Po vychladnutí sa pevne
+usadí na rotore (ak sa usadí zle tak je to veµký problém, výroba kapny
+je finanène veµmi nároèná).
+
+Vinutie je ulo¾ené v~korýtkach zo sµudy, respektíve zo sµudového
+papieru.
+
+Èelá sa izolujú ovinutím. Do tejto izolácie potom ale musíme spravi»
+otvory, taktie¾ kvôli chladeniu.
+
+Zuby sú v~prípade rotoru turboalternátoru mechanicky najchúlostivej¹ie
+(presnej¹ie ich korene). Sna¾íme sa zabráni» tomu, aby sa pri veµkých
+otáèkach odtrhli a preto drá¾ky robíme kónické.
+
+\uv{Falo¹né drá¾ky} bez vinutia slú¾ia na zlep¹enie chladenia, prúdi
+nimi chladiace médium. Taktie¾ mô¾u slú¾i» na zlep¹enie symetrie. Drá¾ky
+turborotorov sú vytvárané hoblovaním alebo frézovaním, ich príprava je
+veµmi nároèná.
+
+\begram
+Vy ¹tebetáte jako drbny v~pohádce.
+\endram
+
+Budiace vinutie je tvorené jednotkami stoviek závitov. Sú pripojené na
+relatívne malé napätie ($600\;\V$) a pretekajú nimi veµké prúdy. Vývody
+sú dva, cez osový vývrt vedú na krú¾ky a kartáèe.
+
+Bez vývodu by nám alternátor príli¹ neslú¾il. Ale ako vyvies» taký
+výkon? Ako vývod slú¾i uzemnená oceµová rúra (plá¹»). V~jej strede (na
+spoloènej osi) je men¹ia rúra pripevnená pomocou trojice izolátorov.
+Takáto kon¹trukcia sa nazýva zapúzdrený vodiè. Z~alternátoru vychádzajú
+tri takéto vodièe a prichádzajú na vstup veµkého transformátoru.
+
+\section Výroba komutátorov
+
+Predpokladajme, ¾e máme hladkú vinutú kotvu a v~nej cievky. K~nim je
+pripevnený komutátor.
+
+Komutátor je zlo¾ený z~po obvode umiestnených lamiel vytvorených
+z~legovanej medi. Komutátora sa dotýka uhlíkový kartáè. Kartáèe sú
+upevnené v~kon¹trukcii nazývanej brejle\footnote{[en] Brush rocker, [de]
+der Kohlebürstenhalter, [ru] ugljedjer¾atjeµ; ale iný názov ne¾
+\uv{dr¾iak uhlíkov} respektíve \uv{dr¾iak kief} som v~slovenèine
+nena¹iel, ¾iadny podobný slangový názov.}. Sú to nejaké pru¾iny, ktoré
+tlaèia uhlíkové kartáèe na lamely. Lamely sú medzi sebou odizolované
+izoláciou nazývanou komutátorový mikanit, u~stredných a veµkých
+komutátátorov tam bude sµuda. Ale nie tá z~odpadu (z~ktorej sa robí
+sµudový papier), ale ¹tiepaná. Medzi plátkami sµudy bude pojivo, ale
+bude ho málo. Preèo? Aby pri stlaèení nevytieklo. Sµudová vlo¾ka bude
+tvarom vyzera» rovnako ako lamela a jej hrúbka bude asi $1$--$2\;\mm$.
+
+\obrazok{Komutátor z~predu, s~izoláciou medzi
+lamelami.}{komutator-z-predu.pdf}
+
+Najèastej¹ie sa lamely komutátora vytvárajú v~tvare rybiny. Je tam
+praporek a budeme naò pripevòova» vinutie cievky. Lamela musí by»
+izolovaná od ostatných lamiel a aj od ¾eleza. Vkladajú sa tam teda
+mikanitové dosky.
+
+\obrazok{Lamela komutátoru v~tvare rybiny,
+z~boku.}{komutator-lamela-rybina.pdf}
+
+Izolácia medzi lamelou a ¾elezom sa nazýva komutátorová man¾eta, je to
+taký stoèený kónusovitý ¾lab.
+
+Kvalitu komutátora mô¾u majstri, ktorí ich vyrábajú, pozna» jednoduchým
+poklepaním kladivkom --- proste poèujú èi to dobre znie.
+
+Lamely sú namáhané aj na odstredivé sily, musíme ich teda stiahnu» tak,
+aby nemohli vyletie». Pri skladaní lamely postavíme na nejakú podlo¾ku
+--- a aby nám v¹etky nespadli, spevníme ich obruèou. Obruè je delená,
+aby sme ju mohli s»ahova». Po stiahnutí vlo¾íme komutátor do pece a
+pojivo v~medzilamelových vlo¾kách sa vytvrdí. Potom obruè viac
+dotiahneme a vlo¾íme znova do pece (tento postup mô¾me opakova» dva a¾
+tri krát). 
+
+Èo mô¾me spravi» s~komutátorom, ktorý sme stiahli obruèou a vypiekli?
+Hlavne nesmieme povoli» obruè --- komutátor by sa síce nerozpadol (je
+dr¾aný samotným speèením), ale povolil by a u¾ nikdy by sme ho tak pevne
+nestiahli. Spojené lamely teda musíme vlo¾i» na kon¹trukciu kde ho
+chceme natrvalo umiestni» a znova vlo¾i» do pece, tak, aby sa vytvrdili
+aj komutátorové man¾ety.
+
+Lamely majú kónický tvar, ináè by sa to nedalo zostavi» (vzdialenos»
+medzi susednými lamelami musí by» v¹ade rovnaká). Presnos» rozmerov
+lamiel je veµmi dôle¾itá, pri stiahnutí by komutátor mohol by» voµný 
+ak by obe plochy susedných komutátorov nedoliehali tak, ako majú. Medzi
+susednými lamelami je drá¾ka, hlboká asi $2\;\mm$ (vyfrézovaná).
+
+Ak chceme stroj na veµký výkon tak nemô¾me spravi» lamely malé --- cez
+malú plochu by sme neboli schopní prenies» po¾adovaný prúd. Komutátory
+sa teda robia väè¹ie, a len výnimoène väè¹ie ako samotný rotor. Zároveò
+kartáèe nemusia by» zhotovené z~jedného kusu uhlíku --- èasto bývajú
+zlo¾ené z~viacerých kusov vedµa seba. Ich naèervenalá farba naznaèuje,
+¾e v~nich je kvôli zlep¹eniu vodivosti primie¹aná meï.
+
+Pre väè¹ie výrobky sú vhodné zderové komutátory. Zdere\footnote{[cz]
+zdìø komutátoru, stahovací --- [en] comutator shrunk-on collar,
+commutator shrink ring; znova nepoznám nejaký iný preklad do slovenèiny
+ne¾ \uv{s»ahovací krú¾ok na komutátor}}. sú oceµové obruèe a chránia
+komutátor pred pôsobením odstredivých síl.
+
+\obrazok{Lamela komutátoru so zderou,
+z~boku.}{komutator-lamela-zder.pdf}
+
+Zdere sa nasádzajú za tepla, nasadi» ich býva problematické. S»ahovaciu
+kon¹trukciu mô¾me odstráni» a¾ po ich nasadení a vychladnutí (aby
+komutátor nestratil pevnos»).
+
+\begram
+Po odtrhnutí mô¾e letiaca lamela z~komutátoru spravi» veµké ¹kody.
+\endram
+
+Malá rybina v~zderi slú¾i na vyva¾ovanie --- pri vyva¾ovaní do nej
+umiestòujeme malé záva¾ie. Býva delené na dva kusy, medzi ne
+zaskrutkujeme skrutku --- takto je tam jednoduch¹ie toto záva¾ie vlo¾i».
+
+Stredne veµké stroje majú èasto rybinovité komutátory so svorníkmi a
+skrutky s~predpätím.
+
+Do lamely sa vyfrézuje malá drá¾ka a do nej umiestnime praporok ---
+slú¾i na privedenie vinutia na lamelu komutátor.
+
+\noobrazok{Lamela s~vyfrézovanou drá¾kou na praporok.}
+
+Ak je motor na veµký výkon tak mô¾e by» rybinovitý komutátor aj dvojitý.
+Potrebujeme tak veµké kartáèe aby boli schopné prenies» po¾adovaný prúd,
+preto ich umiestnime aj 10 vedµa seba. Dlhá lamela by bola veµmi
+namáhaná odstredivými silami, je jednoduch¹ie ju rozdeli» na dve èasti
+(a samozrejme elektricky spoji» --- spojka vyzerá ako rovný praporok).
+
+S~tým súvisí aj to, ¾e priemer komutátora musí by» dostatoène veµký ---
+na malý priemer by sme dokázali da» len veµmi úzke lamely a z~nich by
+sme neodviedli prúd.
+
+Výroba komutátoru je dos» háklivá zále¾itos», ak nieèo stroskotá tak je
+to väè¹inou problém komutátoru. Na kvalite lamely beh stroja veµmi
+zále¾í; staèí aby sa jedna vydula a nastanú veµké problémy. Aj preto
+nesmieme pri výrobe komutátor nikdy povoli» --- po speèení by sa u¾
+nerozpadol, ale povolil by a u¾ nikdy by sme ho nemohli tak pevne
+stiahnu».
+
+Lamely sa kalibrujú a zis»uje sa ich úkos. Pou¾íva sa na to merka
+v~ktorej musí lamela presne sedie». Kontrola musí by» dôkladná, tlak medzi
+lamelami musí by» rovnomerný aby boli lamely pevne upevnené aj v~hornej
+aj v~dolnej èasti.
+
+%\obrazok{Lamely s úkosom.}
+
+Pri skladaní komutátorov sa pou¾ívajú s»ahovacie kon¹trukcie. Najmä pre
+rýchlobe¾né stroje, turboalternátory, sa pou¾ívajú zderové komutátory.
+Menej èastým spôsobom je s»ahovanie pomocou skrutiek. Skrutky tlaèia cez
+akúsi vlo¾ku na lamely, aby ich nepo¹kodili. Rádius vlo¾iek musí
+zodpoveda» rádiusu, ktorý dosiahneme pri úplnom stlaèení. S»ahovacie
+kon¹trukcie sú preto zlo¾ené z~niekoµkých segmentov medzi ktorými je
+¹ikmá medzera --- s»ahovaním sa zmen¹uje.
+
+\noobrazok{Medzera medzi segmentami s»ahovacej kon¹trukcie.}
+
+Niekedy chceme na zderový komutátor umiestni» zder do stredu lamiel
+(ochrana pred úèinkami odstredivých síl). Ako ju tam ale umiestni» bez
+toho, aby sme povolili s»ahovaciu kon¹trukciu? Pou¾ijeme na to fintu
+s~názvom pomocná zder. Kraj komutátoru mierne obrobíme a umiestnime tam
+tenký oceµový kruh --- pomocnú zder. Je samozrejme izolovaná, aby
+neskratovala lamely. Pri výrobe je jej pevnos» dostatoèná na to, aby sme
+mohli s»ahovaciu kon¹trukciu odstráni», ale pri rotácii by lamely
+mechanicky neudr¾ala. Umiestnime cez òu teda e¹te jednu zder, ktorá
+mechanické sily udr¾í.
+
+\noobrazok{Pomocná zder.}
+
+Èastej¹ím typom s»ahovacej kon¹trukcie je lisovací typ. Dostredivý tlak
+je vytváraný kónusmi. Ak je komutátor dlh¹í tak sú zdere na dvoch alebo
+troch miestach.
+
+\noobrazok{S»ahovacia kon¹trukcia kónusovitá.}
+
+Komutátor stiahneme, dopeèieme, znova dotiahneme, dopeèieme, znova a
+znova --- tento postup sa mô¾e opakova» dva alebo tri krát.
+
+Pri väè¹ích komutátoroch je izolácia zásadne sµudová a kombinovaná
+s~pojivom. Sµuda býva väè¹inou plátková. Pojiva býva málo, rádovo jednotky
+percent. Je to preto, aby takáto izolácia nebola stlaèitelná --- aby sa
+po vypeèení a vytvrdení nestláèala ïalej a aby z~nej pojivo nevytekalo.
+Názov takejto izolácie je komutátorový mikanit. Niekedy sa mô¾e vyrába»
+aj zo sµudy regenerovanej (teda z~odpadu). Nie je to v¹ak tak výhodné,
+preto¾e je stlaèiteµná.
+
+Po zosadení do kruhu komutátor e¹te obtáèame na sústruhu --- aby mal
+èo najdokonalej¹í kruhový tvar. Kvôli opotrebeniu komutátoru a jeho
+následnému osústru¾eniu bývajú niekedy na lamelách malé zápichy (zárezy).
+
+Do lamely spravíme kotúèovou frézkou malý zárez a vlo¾íme doò praporok.
+Ten potom znitujeme, zvaríme alebo iným spôsobom pripevníme. Praporok
+pou¾ijeme vtedy, keï je rôzny priemer komutátoru a kotvy.
+
+Nakoniec upevníme kartáèe do brejlí --- dr¾iakov. Veµké stroje majú
+kartáèe veµké, napríklad $2 \times 7 \;\cm$. Do kartáèu sa pridáva meï
+na zlep¹enie vodivosti. Mäkký kartáè vedie veµké prúdy, ale rýchlo sa
+opotrebuváva.
+
+\bye
